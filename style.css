@@ -1,35 +1,54 @@
-:root{
+:root {
     --preto-cinza: #0f0f0f;
     --cor_principal: #2179E6;
     --cor_contraste: #E6A020;
     --cor_secundaria: #3A2CE6;
 }
-body{
-    background-color: #0f0f0f;
-    pad: 0px;
+
+body {
+    background-color: var(--preto-cinza);
+    padding: 5px;
     margin: 0px;
 }
-.primeira_cor{
-    margin: 0px;
-    pad: 0px;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--cor_principal);
-    font-size: 100px;
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.segunda_cor{
-    margin: 0px;
-    pad: 0px;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--cor_contraste);
-    font-size: 100px;
+
+#logo {
+    display: inline-block;
+    width: 200px;
+    margin: 10px;
 }
-.terceira_cor{
-    margin: 0px;
-    pad: 0px;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--cor_secundaria);
-    font-size: 100px;
+#links{
+    display: inline-block;
+    top: auto;
 }
+a {
+    text-decoration: none;
+    color: var(--cor_principal);
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    padding: 10px;
+}
+
+/* Inácio Filho 
+
+position: absolute;
+width: 308px;
+height: 93px;
+left: 27px;
+top: 32px;
+
+font-family: 'Rochester';
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+line-height: 82px;
+letter-spacing: 0.03em;
+
+color: #E6A020;
+
+border: 1px solid #000000;
+text-shadow: 3px 4px 4px rgba(0, 0, 0, 0.5);*/
