@@ -35,15 +35,29 @@ nav {
 strong{
     color: var(--cor_secundaria);
 }
+ul{
+    display: flex;
+    list-style: none;
+}
 
 a {
     text-decoration: none;
     color: var(--cor_principal);
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     font-weight: 900;
-    padding: 12px;
+}
+a.nav{
+    margin: 6px;
+    padding: 6px;
+    border: 1px solid var(--cor_secundaria);
+    border-radius: 8px;
 }
 
+a:hover {
+    background: var(--cor_secundaria);
+    color: white;
+    transition: background 0.5s;
+}
 .abertura{
     display: flex;
     flex-direction: column;
@@ -85,8 +99,9 @@ a {
     justify-content: center;
     align-items: center;
     background-color: black;
-    width: 5vw;
-    height: 5vw;
+    width: 3vw;
+    height: 3vw;
+    margin: 0px 5px 0px 5px;
 }
 
 .github-image {
@@ -104,7 +119,7 @@ a {
     width: 70%;
 }
 
-@media screen and (max-width : 630px){
+@media screen and (max-width : 660px){
     #links{
         visibility: hidden;
     }
