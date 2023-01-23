@@ -10,6 +10,7 @@ body {
     padding: 5px;
     margin: 0px;
     color: white;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
 nav {
@@ -43,63 +44,72 @@ a {
     padding: 12px;
 }
 
+.abertura{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .aceno {
     display: inline-block;
-    width: 70px;
+    width: 4vw;
 }
 
 .mensagem-inicial {
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
-    text-align: justify;
-    padding: 0px 100px 0px 100px;
-    font-size: 6vw;
+    width: 80%;
+    font-size: 4vw;
+    margin-bottom: 0px;
 }
 
 .apresentacao {
-    padding: 0px 100px 0px 100px;
+    width: 80%;
+    font-size: 2vw;
     text-align: justify;
-    font-size: 20px;
 }
 
 .links-externos {
     display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: 3vw;
+    height: 3vw;
     padding: 0px;
     border-radius: 50%;
 }
-
-.links-externos-completa {
-    padding: 0px 100px 0px 100px;
+.links-externos-completa{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
 }
 
-.github {
+.instagram, .youtube, .github{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: black;
-}
-
-.youtube {
-    background-color: black;
-}
-
-.instagram {
-    background-color: black;
+    width: 5vw;
+    height: 5vw;
 }
 
 .github-image {
-    margin: 6px;
     display: inline-block;
-    width: 28px;
+    width: 70%;
 }
 
 .youtube-image {
-    margin: 6px;
     display: inline-block;
-    width: 28px;
+    width: 70%;
 }
 
 .instagram-image {
-    margin: 6px;
     display: inline-block;
-    width: 28px;
+    width: 70%;
+}
+
+@media screen and (max-width : 630px){
+    #links{
+        visibility: hidden;
+    }
+    *>.abertura{
+        display: block;
+        width: 120%;
+    }
 }
