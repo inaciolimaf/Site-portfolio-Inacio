@@ -32,10 +32,11 @@ nav {
     top: auto;
 }
 
-strong{
+strong {
     color: var(--cor_secundaria);
 }
-ul{
+
+ul {
     display: flex;
     list-style: none;
 }
@@ -46,7 +47,8 @@ a {
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     font-weight: 900;
 }
-a.nav{
+
+a.nav {
     margin: 6px;
     padding: 6px;
     border: 1px solid var(--cor_secundaria);
@@ -58,7 +60,8 @@ a:hover {
     color: white;
     transition: background 0.5s;
 }
-.abertura{
+
+.abertura {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,13 +91,16 @@ a:hover {
     padding: 0px;
     border-radius: 50%;
 }
-.links-externos-completa{
+
+.links-externos-completa {
     display: flex;
     flex-direction: row;
     width: 80%;
 }
 
-.instagram, .youtube, .github{
+.instagram,
+.youtube,
+.github {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -119,12 +125,18 @@ a:hover {
     width: 70%;
 }
 
-@media screen and (max-width : 660px){
-    #links{
+@media screen and (max-width : 660px) {
+    #links {
         visibility: hidden;
     }
-    *>.abertura{
+
+    *>.abertura {
         display: block;
         width: 120%;
+    }
+
+    .links-externos {
+        width: 6vw;
+        height: 6vw;
     }
 }
