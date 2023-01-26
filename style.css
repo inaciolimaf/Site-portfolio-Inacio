@@ -46,6 +46,10 @@ a {
     color: var(--cor_principal);
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     font-weight: 900;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 a.nav {
@@ -65,6 +69,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 100px;
 }
 
 .aceno {
@@ -74,20 +79,18 @@ a:hover {
 
 .mensagem-inicial {
     width: 80%;
-    font-size: 3vw;
+    font-size: 4vw;
     margin-bottom: 0px;
 }
 
 .apresentacao {
     width: 80%;
-    font-size: 1.5vw;
+    font-size: 2vw;
     text-align: justify;
 }
 
 .links-externos {
     display: inline-block;
-    width: 3vw;
-    height: 3vw;
     padding: 0px;
     border-radius: 50%;
 }
@@ -104,9 +107,9 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
-    width: 3vw;
-    height: 3vw;
+    background-color: var(--cor_principal);
+    width: 6vw;
+    height: 6vw;
     margin: 0px 5px 0px 5px;
 }
 
@@ -127,7 +130,7 @@ a:hover {
 
 @media screen and (max-width : 660px) {
     #links {
-        visibility: hidden;
+        display: none;
     }
 
     *>.abertura {
@@ -136,13 +139,13 @@ a:hover {
     }
 
     .links-externos {
-        width: 6vw;
-        height: 6vw;
+        width: 12vw;
+        height: 12vw;
     }
     .mensagem-inicial {
-        font-size: 8vw;
+        font-size: 10vw;
     }
     .apresentacao{
-        font-size: 4.5vw;
+        font-size: 6vw;
     }
 }
