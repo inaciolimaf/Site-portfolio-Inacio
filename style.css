@@ -194,6 +194,10 @@ a:hover {
         font-size: 6vw;
     }
 
+    .aceno{
+        width: 8vw;
+    }
+
     #links.active {
         opacity: 1;
     }
