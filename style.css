@@ -208,7 +208,7 @@ a:hover {
 }
 
 .mobile-menu.active .line3 {
-    transform: rotate(45deg) translate(-4px, 4px);
+    transform: rotate(45deg) translate(-4px, -4px);
 }
 
 .mobile-menu div{
