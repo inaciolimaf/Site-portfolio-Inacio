@@ -1,16 +1,17 @@
 :root {
-    --preto-cinza: #0f0f0f;
-    --cor_principal: #2179E6;
-    --cor_contraste: #E6A020;
-    --cor_secundaria: #3A2CE6;
+    --PRETO_CINZA: #0f0f0f;
+    --COR_PRINCIPAL: #2179E6;
+    --COR_CONTRASTE: #E6A020;
+    --COR_SECUNDARIA: #3A2CE6;
+    --FONT_FAMILY: 'Roboto', Arial, Helvetica, sans-serif
 }
 
 body {
-    background-color: var(--preto-cinza);
+    background-color: var(--PRETO_CINZA);
     padding: 5px;
     margin: 0px;
     color: white;
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-family: var(--FONT_FAMILY);
 }
 
 nav {
@@ -30,12 +31,12 @@ nav {
 
 #links {
     display: flex;
-    background-color: var(--preto-cinza);
+    background-color: var(--PRETO_CINZA);
     padding: 0px;
 }
 
 strong {
-    color: var(--cor_secundaria);
+    color: var(--COR_SECUNDARIA);
 }
 
 ul {
@@ -45,8 +46,8 @@ ul {
 
 a {
     text-decoration: none;
-    color: var(--cor_principal);
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    color: var(--COR_PRINCIPAL);
+    font-family: var(--FONT_FAMILY);
     font-weight: 900;
     text-align: center;
     display: flex;
@@ -57,14 +58,13 @@ a {
 a.nav {
     margin: 6px;
     padding: 6px;
-    border: 1px solid var(--cor_secundaria);
+    border: 1px solid var(--COR_SECUNDARIA);
     border-radius: 8px;
     font-size: 18px;
     letter-spacing: 3px;
 }
-
 a:hover {
-    background: var(--cor_secundaria);
+    background: var(--COR_SECUNDARIA);
     color: white;
     transition: background 0.5s;
 }
@@ -123,7 +123,7 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--cor_principal);
+    background-color: var(--COR_PRINCIPAL);
     width: 4vw;
     height: 4vw;
     margin: 0px 5px 0px 5px;
@@ -186,7 +186,7 @@ a:hover {
         height: 12vw;
     }
 
-    .mensagem-inicial {
+    .mensagem-inicial, .aceno{
         font-size: 10vw;
     }
 
