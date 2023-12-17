@@ -1,0 +1,19 @@
+#header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 100px);
+    background-color: #0C0C17;
+    color: white;
+}
+
+#header *{
+    margin-top: 8em;
+    text-align: center;
+    font-weight: 100;
+}
+#tituloPrincipal{
+    margin-top: 1em;
+    font-weight: 900;
+}
