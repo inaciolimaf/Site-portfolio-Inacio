@@ -5,7 +5,7 @@ import { socialLinks } from '@/data/portfolio';
 import { ParticleBackground, TypewriterText, AnimatedCounter } from '@/components/ui/AnimatedElements';
 
 export const Hero = () => {
-  const { content } = useLocale();
+  const { content, locale } = useLocale();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.querySelector(sectionId);
@@ -48,7 +48,7 @@ export const Hero = () => {
 
         <div className="animate-bounce-in animate-delay-500">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-muted-foreground mb-6 text-shimmer">
-            {content.personal.title}
+            {content.personal.title[locale]}
           </h2>
         </div>
         <div className="animate-slide-in-left animate-delay-700">

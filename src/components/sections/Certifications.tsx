@@ -4,7 +4,7 @@ import { Award, Calendar, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export const Certifications = () => {
-  const { content } = useLocale();
+  const { content, locale } = useLocale();
 
   return (
     <section id="certifications" className="py-20 bg-muted">
@@ -32,7 +32,7 @@ export const Certifications = () => {
                 
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg font-semibold text-foreground mb-2">
-                    {certification.name}
+                    {certification.name[locale]}
                   </h3>
                   
                   <p className="text-muted-foreground mb-3">

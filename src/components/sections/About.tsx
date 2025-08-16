@@ -3,8 +3,9 @@ import { MapPin, GraduationCap } from 'lucide-react';
 import { AnimatedCounter } from '@/components/ui/AnimatedElements';
 
 export const About = () => {
-  const { content } = useLocale();
-
+  const { content, locale } = useLocale();
+  console.log("About.tsx - Current locale:", locale);
+  console.log("About.tsx - About title:", content.sections.about.title);
   return (
     <section id="about" className="py-20 bg-muted">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,7 +38,7 @@ export const About = () => {
               <div className="card-professional p-8 space-y-6">
                 <div className="space-y-4">
                   <h3 className="text-2xl font-semibold text-foreground mb-6">
-                    Detalhes Pessoais
+                    {content.sections.about.personalDetails}
                   </h3>
                   
                   <div className="flex items-center space-x-3">
@@ -57,13 +58,13 @@ export const About = () => {
                     <div className="text-2xl font-bold text-primary">
                       <AnimatedCounter end={2} suffix="+" />
                     </div>
-                    <div className="text-sm text-muted-foreground">Anos de Experiência</div>
+                    <div className="text-sm text-muted-foreground">{content.sections.about.yearsExperience}</div>
                   </div>
                   <div className="text-center animate-bounce-in animate-delay-400">
                     <div className="text-2xl font-bold text-primary">
                       <AnimatedCounter end={10} suffix="+" />
                     </div>
-                    <div className="text-sm text-muted-foreground">Projetos Concluídos</div>
+                    <div className="text-sm text-muted-foreground">{content.sections.about.completedProjects}</div>
                   </div>
                 </div>
               </div>

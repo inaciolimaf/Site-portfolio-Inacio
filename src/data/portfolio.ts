@@ -42,20 +42,32 @@ export const experiences: Experience[] = [
   {
     id: '1',
     company: 'Ctrl+Play',
-    position: 'Desenvolvedor de Software',
+    position: {
+      pt: 'Desenvolvedor de Software',
+      en: 'Software Developer',
+    },
     startDate: '2024-09',
     endDate: 'Atual',
     current: true,
-    description: 'Desenvolvimento de sistemas e plataformas digitais utilizando tecnologias modernas.',
+    description: {
+      pt: 'Desenvolvimento de sistemas e plataformas digitais utilizando tecnologias modernas.',
+      en: 'Development of digital systems and platforms using modern technologies.',
+    },
     technologies: ['Python', 'Django REST Framework', 'PostgreSQL', 'Pytest', 'Node.js', 'React.js'],
   },
   {
     id: '2',
     company: 'Loading Desenvolvimento Jr',
-    position: 'Desenvolvedor de Software (Trainee)',
+    position: {
+      pt: 'Desenvolvedor de Software (Trainee)',
+      en: 'Software Developer (Trainee)',
+    },
     startDate: '2023-10',
     endDate: '2024-09',
-    description: 'Desenvolvimento de aplicações web completas com foco em soluções escaláveis.',
+    description: {
+      pt: 'Desenvolvimento de aplicações web completas com foco em soluções escaláveis.',
+      en: 'Development of complete web applications with a focus on scalable solutions.',
+    },
     technologies: ['JavaScript', 'React.js', 'Node.js', 'Python', 'Django', 'HTML5', 'CSS3'],
   },
 ];
@@ -63,8 +75,14 @@ export const experiences: Experience[] = [
 export const projects: Project[] = [
   {
     id: '1',
-    name: 'AutoTech House',
-    description: 'Sistema de Automação Residencial - Casa inteligente com sensores e atuadores, monitoramento remoto via web',
+    name: {
+      pt: 'AutoTech House',
+      en: 'AutoTech House',
+    },
+    description: {
+      pt: 'Sistema de Automação Residencial - Casa inteligente com sensores e atuadores, monitoramento remoto via web',
+      en: 'Home Automation System - Smart home with sensors and actuators, remote monitoring via web',
+    },
     startDate: '2024-04',
     endDate: '2024-08',
     technologies: ['IoT', 'Software em Tempo Real', 'Wi-Fi', 'Bluetooth'],
@@ -76,14 +94,20 @@ export const projects: Project[] = [
 export const certifications: Certification[] = [
   {
     id: '1',
-    name: 'Fundamentals of Deep Learning',
+    name: {
+      pt: 'Fundamentals of Deep Learning',
+      en: 'Fundamentals of Deep Learning',
+    },
     issuer: 'NVIDIA',
     date: '2024-08',
     link: '#',
   },
   {
     id: '2',
-    name: 'TDD - Desenvolvimento de Software Guiado por Testes',
+    name: {
+      pt: 'TDD - Desenvolvimento de Software Guiado por Testes',
+      en: 'TDD - Test-Driven Software Development',
+    },
     issuer: 'Curso Técnico',
     date: '2023-08',
     link: '#',
@@ -94,16 +118,12 @@ export const certifications: Certification[] = [
 export const ptContent: LocaleContent = {
   personal: {
     name: 'Inácio Filho',
-    title: 'Desenvolvedor Full Stack',
+    title: { pt: 'Desenvolvedor Full Stack', en: 'Full Stack Developer' },
     location: 'Fortaleza, CE - Brasil',
     university: 'Engenharia da Computação - UFC',
     email: 'inacio@exemplo.com',
   },
-  about: `Desenvolvedor Full Stack apaixonado por tecnologia e inovação, graduando em Engenharia da Computação pela Universidade Federal do Ceará (UFC). Atuo na criação de soluções web completas, integrando frontend e backend com foco em performance e escalabilidade.
-
-Tenho experiência sólida em desenvolvimento web utilizando Python com Django REST Framework para construção de APIs robustas, Node.js para soluções backend eficientes, e React.js para interfaces de usuário modernas e responsivas. Trabalho com bancos de dados PostgreSQL e aplico metodologias de testes automatizados com Pytest para garantir a qualidade do código.
-
-Busco constantemente aprimorar minhas habilidades técnicas e contribuir para projetos inovadores que utilizem o poder da tecnologia para resolver problemas reais.`,
+  about: `Desenvolvedor Full Stack apaixonado por tecnologia e inovação, graduando em Engenharia da Computação pela Universidade Federal do Ceará (UFC). Atuo na criação de soluções web completas, integrando frontend e backend com foco em performance e escalabilidade.\n\nTenho experiência sólida em desenvolvimento web utilizando Python com Django REST Framework para construção de APIs robustas, Node.js para soluções backend eficientes, e React.js para interfaces de usuário modernas e responsivas. Trabalho com bancos de dados PostgreSQL e aplico metodologias de testes automatizados com Pytest para garantir a qualidade do código.\n\nBusco constantemente aprimorar minhas habilidades técnicas e contribuir para projetos inovadores que utilizem o poder da tecnologia para resolver problemas reais.`,
   navigation: {
     home: 'Início',
     about: 'Sobre',
@@ -112,6 +132,10 @@ Busco constantemente aprimorar minhas habilidades técnicas e contribuir para pr
     projects: 'Projetos',
     certifications: 'Certificações',
     contact: 'Contato',
+  },
+  header: {
+    toggleLanguage: 'Mudar para Inglês',
+    toggleMenu: 'Alternar menu',
   },
   sections: {
     hero: {
@@ -122,10 +146,20 @@ Busco constantemente aprimorar minhas habilidades técnicas e contribuir para pr
     about: {
       title: 'Sobre Mim',
       content: 'Desenvolvedor Full Stack apaixonado por tecnologia',
+      personalDetails: 'Detalhes Pessoais',
+      yearsExperience: 'Anos de Experiência',
+      completedProjects: 'Projetos Concluídos',
     },
     skills: {
       title: 'Minhas Habilidades',
       subtitle: 'Tecnologias que domino e uso no dia a dia',
+      categories: {
+        frontend: 'Frontend',
+        backend: 'Backend',
+        database: 'Banco de Dados',
+        tools: 'Ferramentas',
+        other: 'Outros',
+      },
     },
     experience: {
       title: 'Experiência Profissional',
@@ -137,6 +171,8 @@ Busco constantemente aprimorar minhas habilidades técnicas e contribuir para pr
       subtitle: 'Alguns dos meus trabalhos recentes',
       viewProject: 'Ver Projeto',
       viewGithub: 'Ver no GitHub',
+      featured: 'Destaque',
+      newProject: 'Mais projetos em breve...',
     },
     certifications: {
       title: 'Certificações',
@@ -154,25 +190,44 @@ Busco constantemente aprimorar minhas habilidades técnicas e contribuir para pr
         send: 'Enviar Mensagem',
         sending: 'Enviando...',
         success: 'Mensagem enviada com sucesso!',
+        successDescription: 'Obrigado pelo contato! Retornarei em breve.',
         error: 'Erro ao enviar mensagem. Tente novamente.',
       },
+      letsTalk: 'Vamos Conversar',
+      location: 'Localização',
+      socialMedia: 'Redes Sociais',
     },
+  },
+  footer: {
+    copyright: `© ${new Date().getFullYear()} Inácio Filho. Todos os direitos reservados.`,
+    madeWith: 'Feito com',
+    socials: {
+      github: 'GitHub',
+      linkedin: 'LinkedIn',
+      instagram: 'Instagram',
+    },
+  },
+  notFound: {
+    title: '404',
+    message: 'Oops! Página não encontrada',
+    goHome: 'Voltar para o Início',
+    consoleError: 'Erro 404: O usuário tentou acessar a rota inexistente:',
+  },
+  themeToggle: {
+    switchToDark: 'Mudar para o modo escuro',
+    switchToLight: 'Mudar para o modo claro',
   },
 };
 
 export const enContent: LocaleContent = {
   personal: {
     name: 'Inácio Filho',
-    title: 'Full Stack Developer',
+    title: { pt: 'Desenvolvedor Full Stack', en: 'Full Stack Developer' },
     location: 'Fortaleza, CE - Brazil',
     university: 'Computer Engineering - UFC',
     email: 'inacio@example.com',
   },
-  about: `Full Stack Developer passionate about technology and innovation, studying Computer Engineering at the Federal University of Ceará (UFC). I work on creating complete web solutions, integrating frontend and backend with focus on performance and scalability.
-
-I have solid experience in web development using Python with Django REST Framework for building robust APIs, Node.js for efficient backend solutions, and React.js for modern and responsive user interfaces. I work with PostgreSQL databases and apply automated testing methodologies with Pytest to ensure code quality.
-
-I constantly seek to improve my technical skills and contribute to innovative projects that use the power of technology to solve real problems.`,
+  about: `Full Stack Developer passionate about technology and innovation, studying Computer Engineering at the Federal University of Ceará (UFC). I work on creating complete web solutions, integrating frontend and backend with focus on performance and scalability.\n\nI have solid experience in web development using Python with Django REST Framework for building robust APIs, Node.js for efficient backend solutions, and React.js for modern and responsive user interfaces. I work with PostgreSQL databases and apply automated testing methodologies with Pytest to ensure code quality.\n\nI constantly seek to improve my technical skills and contribute to innovative projects that use the power of technology to solve real problems.`,
   navigation: {
     home: 'Home',
     about: 'About',
@@ -181,6 +236,10 @@ I constantly seek to improve my technical skills and contribute to innovative pr
     projects: 'Projects',
     certifications: 'Certifications',
     contact: 'Contact',
+  },
+  header: {
+    toggleLanguage: 'Switch to Portuguese',
+    toggleMenu: 'Toggle menu',
   },
   sections: {
     hero: {
@@ -191,10 +250,20 @@ I constantly seek to improve my technical skills and contribute to innovative pr
     about: {
       title: 'About Me',
       content: 'Full Stack Developer passionate about technology',
+      personalDetails: 'Personal Details',
+      yearsExperience: 'Years of Experience',
+      completedProjects: 'Completed Projects',
     },
     skills: {
       title: 'My Skills',
       subtitle: 'Technologies I master and use daily',
+      categories: {
+        frontend: 'Frontend',
+        backend: 'Backend',
+        database: 'Database',
+        tools: 'Tools',
+        other: 'Other',
+      },
     },
     experience: {
       title: 'Professional Experience',
@@ -206,6 +275,8 @@ I constantly seek to improve my technical skills and contribute to innovative pr
       subtitle: 'Some of my recent work',
       viewProject: 'View Project',
       viewGithub: 'View on GitHub',
+      featured: 'Featured',
+      newProject: 'More projects coming soon...',
     },
     certifications: {
       title: 'Certifications',
@@ -223,8 +294,31 @@ I constantly seek to improve my technical skills and contribute to innovative pr
         send: 'Send Message',
         sending: 'Sending...',
         success: 'Message sent successfully!',
+        successDescription: 'Thank you for your message! I will get back to you soon.',
         error: 'Error sending message. Please try again.',
       },
+      letsTalk: 'Let\'s Talk',
+      location: 'Location',
+      socialMedia: 'Social Media',
     },
+  },
+  footer: {
+    copyright: `© ${new Date().getFullYear()} Inácio Filho. All rights reserved.`,
+    madeWith: 'Made with',
+    socials: {
+      github: 'GitHub',
+      linkedin: 'LinkedIn',
+      instagram: 'Instagram',
+    },
+  },
+  notFound: {
+    title: '404',
+    message: 'Oops! Page not found',
+    goHome: 'Return to Home',
+    consoleError: '404 Error: User attempted to access non-existent route:',
+  },
+  themeToggle: {
+    switchToDark: 'Switch to dark mode',
+    switchToLight: 'Switch to light mode',
   },
 };

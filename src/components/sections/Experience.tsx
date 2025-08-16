@@ -4,7 +4,7 @@ import { CalendarDays, MapPin, Building } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 export const Experience = () => {
-  const { content } = useLocale();
+  const { content, locale } = useLocale();
 
   return (
     <section id="experience" className="py-20 bg-muted">
@@ -37,7 +37,7 @@ export const Experience = () => {
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                     <div>
                       <h3 className="text-xl font-semibold text-foreground mb-1">
-                        {experience.position}
+                        {experience.position[locale]}
                       </h3>
                       <div className="flex items-center space-x-2 text-muted-foreground">
                         <Building className="h-4 w-4" />
@@ -58,7 +58,7 @@ export const Experience = () => {
                   </div>
 
                   <p className="text-foreground/80 mb-4 leading-relaxed">
-                    {experience.description}
+                    {experience.description[locale]}
                   </p>
 
                   <div className="flex flex-wrap gap-2">

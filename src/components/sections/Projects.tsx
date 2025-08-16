@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
 export const Projects = () => {
-  const { content } = useLocale();
+  const { content, locale } = useLocale();
 
   return (
     <section id="projects" className="py-20">
@@ -37,15 +37,15 @@ export const Projects = () => {
               <div className="space-y-4">
                 <div className="flex items-start justify-between">
                   <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-                    {project.name}
+                    {project.name[locale]}
                   </h3>
                   {project.featured && (
-                    <Badge variant="secondary">Featured</Badge>
+                    <Badge variant="secondary">{content.sections.projects.featured}</Badge>
                   )}
                 </div>
 
                 <p className="text-foreground/80 leading-relaxed">
-                  {project.description}
+                  {project.description[locale]}
                 </p>
 
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
@@ -108,7 +108,7 @@ export const Projects = () => {
           <div className="card-professional p-6 border-dashed border-2 border-primary/30 flex flex-col items-center justify-center text-center min-h-[300px] opacity-60 hover:opacity-100 transition-all duration-500 hover:border-primary/50 hover:bg-primary/5 animate-pulse-slow">
             <div className="text-4xl mb-4 animate-bounce">➕</div>
             <p className="text-muted-foreground text-shimmer">
-              Mais projetos em breve...
+              {content.sections.projects.newProject}
             </p>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { Github, Linkedin, Instagram, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export const Footer = () => {
-  const { content } = useLocale();
+  const { content, locale } = useLocale();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -17,7 +17,7 @@ export const Footer = () => {
               {content.personal.name}
             </h3>
             <p className="text-muted-foreground">
-              {content.personal.title}
+              {content.personal.title[locale]}
             </p>
           </div>
 
@@ -34,7 +34,7 @@ export const Footer = () => {
                   href={socialLinks.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="GitHub"
+                  aria-label={content.footer.socials.github}
                 >
                   <Github className="h-5 w-5" />
                 </a>
@@ -51,7 +51,7 @@ export const Footer = () => {
                   href={socialLinks.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="LinkedIn"
+                  aria-label={content.footer.socials.linkedin}
                 >
                   <Linkedin className="h-5 w-5" />
                 </a>
@@ -68,7 +68,7 @@ export const Footer = () => {
                   href={socialLinks.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Instagram"
+                  aria-label={content.footer.socials.instagram}
                 >
                   <Instagram className="h-5 w-5" />
                 </a>
@@ -80,9 +80,9 @@ export const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-border/50 mt-8 pt-8 text-center">
           <p className="text-muted-foreground text-sm flex items-center justify-center space-x-2">
-            <span>© {currentYear} {content.personal.name}. Feito com</span>
+            <span>{content.footer.copyright}</span>
             <Heart className="h-4 w-4 text-red-500 fill-current" />
-            <span>usando React & TypeScript</span>
+            <span>{content.footer.madeWith} React & TypeScript</span>
           </p>
         </div>
       </div>

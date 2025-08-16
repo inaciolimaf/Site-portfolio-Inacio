@@ -73,7 +73,7 @@ export const Header = () => {
               size="icon"
               onClick={handleLanguageToggle}
               className="h-10 w-10 hover:bg-secondary/80"
-              aria-label={`Switch to ${locale === 'pt' ? 'English' : 'Portuguese'}`}
+              aria-label={content.header.toggleLanguage}
             >
               <Globe className="h-5 w-5" />
             </Button>
@@ -87,6 +87,7 @@ export const Header = () => {
               size="icon"
               onClick={handleLanguageToggle}
               className="h-10 w-10"
+              aria-label={content.header.toggleLanguage}
             >
               <Globe className="h-5 w-5" />
             </Button>
@@ -96,7 +97,7 @@ export const Header = () => {
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="h-10 w-10"
-              aria-label="Toggle menu"
+              aria-label={content.header.toggleMenu}
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>

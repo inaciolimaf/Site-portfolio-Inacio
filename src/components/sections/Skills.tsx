@@ -25,7 +25,7 @@ const categoryColors = {
 };
 
 export const Skills = () => {
-  const { content } = useLocale();
+  const { content, locale } = useLocale();
 
   const groupedSkills = skills.reduce((acc, skill) => {
     if (!acc[skill.category]) {
@@ -63,11 +63,7 @@ export const Skills = () => {
                     <IconComponent className="h-6 w-6" />
                   </div>
                   <h3 className="text-lg font-semibold capitalize">
-                    {category === 'frontend' && 'Frontend'}
-                    {category === 'backend' && 'Backend'}
-                    {category === 'database' && 'Database'}
-                    {category === 'tools' && 'Tools'}
-                    {category === 'other' && 'Other'}
+                    {content.sections.skills.categories[category as keyof typeof content.sections.skills.categories]}
                   </h3>
                 </div>
 

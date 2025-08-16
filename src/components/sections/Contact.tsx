@@ -35,7 +35,7 @@ export const Contact = () => {
       
       toast({
         title: content.sections.contact.form.success,
-        description: "Obrigado pelo contato! Retornarei em breve.",
+        description: content.sections.contact.form.successDescription,
       });
       
       setFormData({ name: '', email: '', subject: '', message: '' });
@@ -65,7 +65,7 @@ export const Contact = () => {
           {/* Contact Info */}
           <div className="animate-slide-in-left">
             <div className="card-professional p-8 h-full">
-              <h3 className="text-2xl font-semibold mb-6">Vamos Conversar</h3>
+              <h3 className="text-2xl font-semibold mb-6">{content.sections.contact.letsTalk}</h3>
               
               <div className="space-y-6">
                 <div className="flex items-center space-x-4 animate-slide-in-left animate-delay-100">
@@ -73,7 +73,7 @@ export const Contact = () => {
                     <Mail className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <p className="font-medium">Email</p>
+                    <p className="font-medium">{content.sections.contact.form.email}</p>
                     <p className="text-muted-foreground">{content.personal.email}</p>
                   </div>
                 </div>
@@ -83,14 +83,14 @@ export const Contact = () => {
                     <MapPin className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <p className="font-medium">Localização</p>
+                    <p className="font-medium">{content.sections.contact.location}</p>
                     <p className="text-muted-foreground">{content.personal.location}</p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-8 animate-fade-in animate-delay-300">
-                <h4 className="font-semibold mb-4">Redes Sociais</h4>
+                <h4 className="font-semibold mb-4">{content.sections.contact.socialMedia}</h4>
                 <div className="flex space-x-4">
                   {socialLinks.github && (
                     <Button

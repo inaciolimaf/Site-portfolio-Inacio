@@ -1,8 +1,13 @@
 // Professional Portfolio Types - Inácio Filho
 
+export type LocalizedText = {
+  pt: string;
+  en: string;
+};
+
 export interface PersonalInfo {
   name: string;
-  title: string;
+  title: LocalizedText;
   location: string;
   university: string;
   email: string;
@@ -19,18 +24,18 @@ export interface SocialLinks {
 export interface Experience {
   id: string;
   company: string;
-  position: string;
+  position: LocalizedText;
   startDate: string;
   endDate: string;
-  description: string;
+  description: LocalizedText;
   technologies: string[];
   current?: boolean;
 }
 
 export interface Project {
   id: string;
-  name: string;
-  description: string;
+  name: LocalizedText;
+  description: LocalizedText;
   startDate: string;
   endDate?: string;
   technologies: string[];
@@ -42,7 +47,7 @@ export interface Project {
 
 export interface Certification {
   id: string;
-  name: string;
+  name: LocalizedText;
   issuer: string;
   date: string;
   link?: string;
@@ -74,6 +79,19 @@ export interface LocaleContent {
     certifications: string;
     contact: string;
   };
+  header: {
+    toggleLanguage: string;
+    toggleMenu: string;
+  };
+  footer: {
+    copyright: string;
+    madeWith: string;
+    socials: {
+      github: string;
+      linkedin: string;
+      instagram: string;
+    };
+  };
   sections: {
     hero: {
       greeting: string;
@@ -83,10 +101,20 @@ export interface LocaleContent {
     about: {
       title: string;
       content: string;
+      personalDetails: string;
+      yearsExperience: string;
+      completedProjects: string;
     };
     skills: {
       title: string;
       subtitle: string;
+      categories: {
+        frontend: string;
+        backend: string;
+        database: string;
+        tools: string;
+        other: string;
+      };
     };
     experience: {
       title: string;
@@ -98,6 +126,8 @@ export interface LocaleContent {
       subtitle: string;
       viewProject: string;
       viewGithub: string;
+      featured: string;
+      newProject: string;
     };
     certifications: {
       title: string;
@@ -115,8 +145,22 @@ export interface LocaleContent {
         send: string;
         sending: string;
         success: string;
+        successDescription: string;
         error: string;
       };
+      letsTalk: string;
+      location: string;
+      socialMedia: string;
     };
+  };
+  notFound: {
+    title: string;
+    message: string;
+    goHome: string;
+    consoleError: string;
+  };
+  themeToggle: {
+    switchToDark: string;
+    switchToLight: string;
   };
 }
