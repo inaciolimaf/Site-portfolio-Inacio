@@ -19,12 +19,12 @@ export const Projects = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex flex-col items-center gap-8 max-w-lg mx-auto">
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className={`card-professional p-6 group hover:scale-105 transition-all duration-500 animate-rotate-in hover-gradient ${
-                project.featured ? 'md:col-span-2 lg:col-span-2 ring-2 ring-primary/20' : ''
+              className={`card-professional p-6 group hover:scale-105 transition-all duration-500 animate-rotate-in hover-gradient w-full ${
+                project.featured ? 'ring-2 ring-primary/20' : ''
               }`}
               style={{ animationDelay: `${index * 0.2}s` }}
             >
@@ -103,14 +103,6 @@ export const Projects = () => {
               </div>
             </div>
           ))}
-
-          {/* Add Project Placeholder */}
-          <div className="card-professional p-6 border-dashed border-2 border-primary/30 flex flex-col items-center justify-center text-center min-h-[300px] opacity-60 hover:opacity-100 transition-all duration-500 hover:border-primary/50 hover:bg-primary/5 animate-pulse-slow">
-            <div className="text-4xl mb-4 animate-bounce">➕</div>
-            <p className="text-muted-foreground text-shimmer">
-              {content.sections.projects.newProject}
-            </p>
-          </div>
         </div>
       </div>
     </section>

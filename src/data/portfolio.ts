@@ -22,20 +22,26 @@ export const skills: Skill[] = [
   
   // Backend
   { name: 'Python', category: 'backend' },
+  { name: 'Django', category: 'backend' },
   { name: 'Django REST Framework', category: 'backend' },
   { name: 'Node.js', category: 'backend' },
+  { name: 'Express', category: 'backend' },
   { name: 'APIs RESTful', category: 'backend' },
   
   // Database
   { name: 'PostgreSQL', category: 'database' },
   
-  // Tools & Other
+  // Tools & DevOps
   { name: 'Git', category: 'tools' },
+  { name: 'Docker', category: 'tools' },
   { name: 'Pytest', category: 'tools' },
-  { name: 'IoT', category: 'other' },
-  { name: 'Automação', category: 'other' },
-  { name: 'Pandas', category: 'other' },
-  { name: 'Selenium', category: 'other' },
+  { name: 'JWT', category: 'tools' },
+  
+  // AI & Other
+  { name: 'AI/ML Integration', category: 'other' },
+  { name: 'Llama', category: 'other' },
+  { name: 'TDD', category: 'other' },
+  { name: 'Microserviços', category: 'other' },
 ];
 
 export const experiences: Experience[] = [
@@ -43,32 +49,47 @@ export const experiences: Experience[] = [
     id: '1',
     company: 'Ctrl+Play',
     position: {
-      pt: 'Desenvolvedor de Software',
-      en: 'Software Developer',
+      pt: 'Desenvolvedor Full Stack',
+      en: 'Full Stack Developer',
     },
     startDate: '2024-09',
-    endDate: 'Atual',
+    endDate: 'Presente',
     current: true,
     description: {
-      pt: 'Desenvolvimento de sistemas e plataformas digitais utilizando tecnologias modernas.',
-      en: 'Development of digital systems and platforms using modern technologies.',
+      pt: 'Desenvolvedor full stack responsável por fortalecer o sistema LMS (Learning Management System) da empresa, focando em estabilidade e performance. Implementei sistema complexo de versionamento de cursos, APIs RESTful robustas e estratégias abrangentes de testes com cobertura superior a 85%.',
+      en: 'Full stack developer responsible for strengthening the company\'s LMS (Learning Management System), focusing on stability and performance. Implemented complex course versioning system, robust RESTful APIs and comprehensive testing strategies with over 85% coverage.',
     },
-    technologies: ['Python', 'Django REST Framework', 'PostgreSQL', 'Pytest', 'Node.js', 'React.js'],
+    technologies: ['Python', 'Django REST Framework', 'APIs RESTful', 'PostgreSQL', 'Pytest', 'Node.js', 'React.js', 'Git', 'DevOps'],
   },
   {
     id: '2',
+    company: 'NUVEN',
+    position: {
+      pt: 'Desenvolvedor de Back End',
+      en: 'Backend Developer',
+    },
+    startDate: '2024-01',
+    endDate: '2024-12',
+    description: {
+      pt: 'Desenvolvedor backend especializado em soluções de inteligência artificial. Arquitetei e implementei integração completa com o modelo Llama, sistema de autenticação JWT, rate limiting e containerização com Docker. Estabeleci arquitetura escalável para múltiplas instâncias simultâneas de IA.',
+      en: 'Backend developer specialized in artificial intelligence solutions. Architected and implemented complete integration with Llama model, JWT authentication system, rate limiting and Docker containerization. Established scalable architecture for multiple simultaneous AI instances.',
+    },
+    technologies: ['Node.js', 'Express', 'TypeScript', 'Llama', 'PostgreSQL', 'Docker', 'JWT'],
+  },
+  {
+    id: '3',
     company: 'Loading Desenvolvimento Jr',
     position: {
-      pt: 'Desenvolvedor de Software (Trainee)',
-      en: 'Software Developer (Trainee)',
+      pt: 'Desenvolvedor de Software',
+      en: 'Software Developer',
     },
-    startDate: '2023-10',
-    endDate: '2024-09',
+    startDate: '2023-06',
+    endDate: '2023-12',
     description: {
-      pt: 'Desenvolvimento de aplicações web completas com foco em soluções escaláveis.',
-      en: 'Development of complete web applications with a focus on scalable solutions.',
+      pt: 'Trainee em desenvolvimento web full-stack, participando de projetos reais em ambiente de aprendizado estruturado. Desenvolvi aplicações web completas, interfaces responsivas e APIs para comunicação entre sistemas, seguindo boas práticas e metodologias ágeis.',
+      en: 'Full-stack web development trainee, participating in real projects in a structured learning environment. Developed complete web applications, responsive interfaces and APIs for system communication, following best practices and agile methodologies.',
     },
-    technologies: ['JavaScript', 'React.js', 'Node.js', 'Python', 'Django', 'HTML5', 'CSS3'],
+    technologies: ['JavaScript', 'React.js', 'Node.js', 'Python', 'Django', 'HTML5', 'CSS3', 'Git'],
   },
 ];
 
@@ -76,17 +97,49 @@ export const projects: Project[] = [
   {
     id: '1',
     name: {
-      pt: 'AutoTech House',
-      en: 'AutoTech House',
+      pt: 'VisaoSISU',
+      en: 'VisaoSISU',
     },
     description: {
-      pt: 'Sistema de Automação Residencial - Casa inteligente com sensores e atuadores, monitoramento remoto via web',
-      en: 'Home Automation System - Smart home with sensors and actuators, remote monitoring via web',
+      pt: 'Site para visualização das notas de corte anteriores do SISU, facilitando a consulta histórica para estudantes.',
+      en: 'Website for viewing previous SISU cutoff scores, facilitating historical consultation for students.',
     },
-    startDate: '2024-04',
-    endDate: '2024-08',
-    technologies: ['IoT', 'Software em Tempo Real', 'Wi-Fi', 'Bluetooth'],
-    github: '#',
+    startDate: '2024',
+    endDate: '2024',
+    technologies: ['JavaScript', 'HTML', 'CSS'],
+    github: 'https://github.com/inaciolimaf/VisaoSISU',
+    featured: true,
+  },
+  {
+    id: '2',
+    name: {
+      pt: 'Sisu-Dados',
+      en: 'Sisu-Dados',
+    },
+    description: {
+      pt: 'Script Python para consumir a API do SISU e armazenar os dados de forma estruturada.',
+      en: 'Python script to consume SISU API and store data in a structured way.',
+    },
+    startDate: '2024',
+    endDate: '2024',
+    technologies: ['Python', 'API', 'Data Processing'],
+    github: 'https://github.com/inaciolimaf/Sisu-Dados',
+    featured: true,
+  },
+  {
+    id: '3',
+    name: {
+      pt: 'Microdados-Enem',
+      en: 'Microdados-Enem',
+    },
+    description: {
+      pt: 'Análise dos microdados do ENEM criando relação entre número de questões acertadas e a nota final.',
+      en: 'Analysis of ENEM microdata creating relationship between number of correct answers and final score.',
+    },
+    startDate: '2024',
+    endDate: '2024',
+    technologies: ['Python', 'Data Analysis', 'Pandas'],
+    github: 'https://github.com/inaciolimaf/Microdados-Enem',
     featured: true,
   },
 ];
@@ -99,18 +152,18 @@ export const certifications: Certification[] = [
       en: 'Fundamentals of Deep Learning',
     },
     issuer: 'NVIDIA',
-    date: '2024-08',
-    link: 'https://coursera.org/share/19ca107aa8cfe08cb965ce536884a54b',
+    date: '2024',
+    link: '#',
   },
   {
     id: '2',
     name: {
-      pt: 'TDD - Desenvolvimento de Software Guiado por Testes',
-      en: 'TDD - Test-Driven Software Development',
+      pt: 'TDD – Desenvolvimento de Software Guiado por Testes',
+      en: 'TDD – Test-Driven Software Development',
     },
-    issuer: 'Coursera',
+    issuer: 'Instituto Tecnológico de Aeronáutica (Coursera)',
     date: '2023-08',
-    link: 'https://coursera.org/share/19ca107aa8cfe08cb965ce536884a54b',
+    link: 'https://www.coursera.org/account/accomplishments/verify/U7SSCUEEM2K2',
   },
 ];
 
@@ -119,11 +172,11 @@ export const ptContent: LocaleContent = {
   personal: {
     name: 'Inácio Filho',
     title: { pt: 'Desenvolvedor Full Stack', en: 'Full Stack Developer' },
-    location: 'Fortaleza, CE - Brasil',
+    location: 'Coreaú, Ceará - Brasil',
     university: 'Engenharia da Computação - UFC',
-    email: 'inacio@exemplo.com',
+    email: 'inaciofilho.lima@gmail.com',
   },
-  about: `Desenvolvedor Full Stack apaixonado por tecnologia e inovação, graduando em Engenharia da Computação pela Universidade Federal do Ceará (UFC). Atuo na criação de soluções web completas, integrando frontend e backend com foco em performance e escalabilidade.\n\nTenho experiência sólida em desenvolvimento web utilizando Python com Django REST Framework para construção de APIs robustas, Node.js para soluções backend eficientes, e React.js para interfaces de usuário modernas e responsivas. Trabalho com bancos de dados PostgreSQL e aplico metodologias de testes automatizados com Pytest para garantir a qualidade do código.\n\nBusco constantemente aprimorar minhas habilidades técnicas e contribuir para projetos inovadores que utilizem o poder da tecnologia para resolver problemas reais.`,
+  about: `Desenvolvedor Full Stack desde 2023, especializado em arquiteturas backend de alta performance e integração de inteligência artificial. Com mais de 3 projetos enterprise entregues e 100% de entregas no prazo, minha expertise inclui Python/Django, Node.js/TypeScript, React.js e PostgreSQL.\n\nFoco em código limpo, testes automatizados e arquiteturas bem estruturadas. Desenvolvo APIs RESTful robustas e escaláveis, sistemas LMS complexos com versionamento avançado e cobertura de testes superior a 85%.\n\nGraduando em Engenharia da Computação pela Universidade Federal do Ceará, sempre em busca de soluções inovadoras que utilizem tecnologia para resolver problemas reais.`,
   navigation: {
     home: 'Início',
     about: 'Sobre',
@@ -140,35 +193,35 @@ export const ptContent: LocaleContent = {
   sections: {
     hero: {
       greeting: 'Olá, eu sou',
-      description: 'Criando soluções web completas com foco em performance e escalabilidade',
+      description: 'Desenvolvedor Full Stack | Backend Specialist | Graduado em Engenharia da Computação',
       cta: 'Ver Projetos',
     },
     about: {
       title: 'Sobre Mim',
-      content: 'Desenvolvedor Full Stack apaixonado por tecnologia',
+      content: 'Desenvolvedor Full Stack especializado em soluções escaláveis',
       personalDetails: 'Detalhes Pessoais',
       yearsExperience: 'Anos de Experiência',
       completedProjects: 'Projetos Concluídos',
     },
     skills: {
-      title: 'Minhas Habilidades',
-      subtitle: 'Tecnologias que domino e uso no dia a dia',
+      title: 'Principais Competências',
+      subtitle: 'Tecnologias que domino e uso para criar soluções robustas',
       categories: {
         frontend: 'Frontend',
         backend: 'Backend',
         database: 'Banco de Dados',
-        tools: 'Ferramentas',
-        other: 'Outros',
+        tools: 'Ferramentas & DevOps',
+        other: 'IA & Outros',
       },
     },
     experience: {
       title: 'Experiência Profissional',
-      subtitle: 'Minha jornada no desenvolvimento de software',
+      subtitle: 'Minha jornada no desenvolvimento de soluções enterprise',
       current: 'Atual',
     },
     projects: {
       title: 'Projetos',
-      subtitle: 'Alguns dos meus trabalhos recentes',
+      subtitle: 'Alguns dos meus trabalhos em GitHub',
       viewProject: 'Ver Projeto',
       viewGithub: 'Ver no GitHub',
       featured: 'Destaque',
@@ -180,8 +233,8 @@ export const ptContent: LocaleContent = {
       viewCredential: 'Ver Certificado',
     },
     contact: {
-      title: 'Entre em Contato',
-      subtitle: 'Vamos conversar sobre seu próximo projeto',
+      title: 'Vamos Conversar?',
+      subtitle: 'Entre em contato para discutir seu próximo projeto',
       form: {
         name: 'Nome',
         email: 'Email',
@@ -223,11 +276,11 @@ export const enContent: LocaleContent = {
   personal: {
     name: 'Inácio Filho',
     title: { pt: 'Desenvolvedor Full Stack', en: 'Full Stack Developer' },
-    location: 'Fortaleza, CE - Brazil',
+    location: 'Coreaú, Ceará - Brazil',
     university: 'Computer Engineering - UFC',
-    email: 'inacio@example.com',
+    email: 'inaciofilho.lima@gmail.com',
   },
-  about: `Full Stack Developer passionate about technology and innovation, studying Computer Engineering at the Federal University of Ceará (UFC). I work on creating complete web solutions, integrating frontend and backend with focus on performance and scalability.\n\nI have solid experience in web development using Python with Django REST Framework for building robust APIs, Node.js for efficient backend solutions, and React.js for modern and responsive user interfaces. I work with PostgreSQL databases and apply automated testing methodologies with Pytest to ensure code quality.\n\nI constantly seek to improve my technical skills and contribute to innovative projects that use the power of technology to solve real problems.`,
+  about: `Full Stack Developer since 2023, specialized in high-performance backend architectures and artificial intelligence integration. With over 3 enterprise projects delivered and 100% on-time delivery, my expertise includes Python/Django, Node.js/TypeScript, React.js and PostgreSQL.\n\nFocusing on clean code, automated testing and well-structured architectures. I develop robust and scalable RESTful APIs, complex LMS systems with advanced versioning and test coverage over 85%.\n\nStudying Computer Engineering at the Federal University of Ceará, always seeking innovative solutions that use technology to solve real problems.`,
   navigation: {
     home: 'Home',
     about: 'About',
@@ -244,35 +297,35 @@ export const enContent: LocaleContent = {
   sections: {
     hero: {
       greeting: 'Hello, I am',
-      description: 'Creating complete web solutions focused on performance and scalability',
+      description: 'Full Stack Developer | Backend Specialist | Computer Engineering Graduate',
       cta: 'View Projects',
     },
     about: {
       title: 'About Me',
-      content: 'Full Stack Developer passionate about technology',
+      content: 'Full Stack Developer specialized in scalable solutions',
       personalDetails: 'Personal Details',
       yearsExperience: 'Years of Experience',
       completedProjects: 'Completed Projects',
     },
     skills: {
-      title: 'My Skills',
-      subtitle: 'Technologies I master and use daily',
+      title: 'Core Competencies',
+      subtitle: 'Technologies I master and use to create robust solutions',
       categories: {
         frontend: 'Frontend',
         backend: 'Backend',
         database: 'Database',
-        tools: 'Tools',
-        other: 'Other',
+        tools: 'Tools & DevOps',
+        other: 'AI & Other',
       },
     },
     experience: {
       title: 'Professional Experience',
-      subtitle: 'My journey in software development',
+      subtitle: 'My journey in developing enterprise solutions',
       current: 'Current',
     },
     projects: {
       title: 'Projects',
-      subtitle: 'Some of my recent work',
+      subtitle: 'Some of my work on GitHub',
       viewProject: 'View Project',
       viewGithub: 'View on GitHub',
       featured: 'Featured',
@@ -284,8 +337,8 @@ export const enContent: LocaleContent = {
       viewCredential: 'View Certificate',
     },
     contact: {
-      title: 'Get In Touch',
-      subtitle: 'Let\'s talk about your next project',
+      title: 'Let\'s Talk?',
+      subtitle: 'Get in touch to discuss your next project',
       form: {
         name: 'Name',
         email: 'Email',
