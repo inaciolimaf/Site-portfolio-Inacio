@@ -7,7 +7,7 @@ export const Certifications = () => {
   const { content } = useLocale();
 
   return (
-    <section id="certifications" className="py-20 bg-secondary/30">
+    <section id="certifications" className="py-20 bg-muted">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-hero-gradient">
