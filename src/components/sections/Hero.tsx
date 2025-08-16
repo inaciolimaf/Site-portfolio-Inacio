@@ -27,17 +27,17 @@ export const Hero = () => {
     
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="text-center max-w-4xl mx-auto">
-        {/* Greeting */}
+        
         <div className="animate-fade-in">
           <p className="text-lg md:text-xl text-muted-foreground mb-4">
             <TypewriterText 
               text={content.sections.hero.greeting}
               speed={100}
+              hideCursorAfter={true}
             />
           </p>
         </div>
 
-        {/* Main Name */}
         <div className="animate-scale-in animate-delay-300">
           <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6">
             <span className="text-hero-gradient animate-glow">
@@ -46,21 +46,16 @@ export const Hero = () => {
           </h1>
         </div>
 
-        {/* Title */}
         <div className="animate-bounce-in animate-delay-500">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-muted-foreground mb-6 text-shimmer">
             {content.personal.title}
           </h2>
         </div>
-
-        {/* Description */}
         <div className="animate-slide-in-left animate-delay-700">
           <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
             {content.sections.hero.description}
           </p>
         </div>
-
-        {/* Social Links */}
         <div className="animate-zoom-in animate-delay-800">
           <div className="flex justify-center space-x-6 mb-12">
             {socialLinks.github && (
@@ -114,7 +109,6 @@ export const Hero = () => {
           </div>
         </div>
 
-        {/* CTA Button */}
         <div className="animate-zoom-in animate-delay-1400">
           <Button
             onClick={() => scrollToSection('#projects')}
@@ -126,8 +120,7 @@ export const Hero = () => {
       </div>
     </div>
 
-    {/* Scroll Indicator - Fixed at bottom */}
-    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce animate-delay-1600">
+    <div className="absolute bottom-8 transform -translate-x-1/2 animate-bounce animate-delay-1600">
       <Button
         variant="ghost"
         size="icon"

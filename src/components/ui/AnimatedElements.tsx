@@ -108,16 +108,21 @@ interface TypewriterTextProps {
   speed?: number;
   className?: string;
   onComplete?: () => void;
+  showCursor?: boolean;
+  hideCursorAfter?: boolean;
 }
 
 export const TypewriterText: React.FC<TypewriterTextProps> = ({ 
   text, 
   speed = 50, 
   className = '',
-  onComplete 
+  onComplete,
+  showCursor = true,
+  hideCursorAfter = false
 }) => {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
     if (currentIndex < text.length) {
@@ -127,13 +132,18 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
       }, speed);
 
       return () => clearTimeout(timeout);
-    } else if (onComplete) {
-      onComplete();
+    } else {
+      setIsComplete(true);
+      if (onComplete) {
+        onComplete();
+      }
     }
   }, [currentIndex, text, speed, onComplete]);
 
+  const shouldShowCursor = showCursor && (!hideCursorAfter || !isComplete);
+
   return (
-    <span className={`${className} border-r-2 border-primary`}>
+    <span className={`${className} ${shouldShowCursor ? 'border-r-2 border-primary animate-pulse' : ''}`}>
       {displayText}
     </span>
   );
