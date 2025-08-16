@@ -1,73 +1,106 @@
-# Welcome to your Lovable project
+# Personal Portfolio Website
 
-## Project info
+## Overview
 
-**URL**: https://lovable.dev/projects/9952d475-2416-4035-bbf7-4fbba2118967
+This is a modern, responsive, and interactive personal portfolio website designed to showcase my skills, projects, experience, and certifications. Built with cutting-edge web technologies, it provides a smooth user experience with dynamic content and a clean, professional design.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+-   **Responsive Design**: Optimized for various screen sizes, from mobile devices to large desktops.
+-   **Dynamic Content**: Easily update personal information, sections, and project details via a centralized data file.
+-   **Theme Toggle**: Switch between light and dark modes for a personalized viewing experience.
+-   **Language Toggle**: Supports multiple languages (Portuguese and English) for broader accessibility.
+-   **Interactive UI**: Includes animated elements, scroll progress bar, and smooth transitions.
+-   **Modular Structure**: Organized into reusable components for easy maintenance and scalability.
+-   **Sections**: Home (Hero), About, Skills, Experience, Projects, Certifications, and Contact.
 
-**Use Lovable**
+## Technologies Used
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/9952d475-2416-4035-bbf7-4fbba2118967) and start prompting.
+-   **Framework**: React
+-   **Language**: TypeScript
+-   **Build Tool**: Vite
+-   **Styling**: Tailwind CSS
+-   **UI Components**: shadcn/ui
+-   **Icons**: Lucide React
+-   **State Management**: React Context API (for locale)
 
-Changes made via Lovable will be committed automatically to this repo.
+## Getting Started
 
-**Use your preferred IDE**
+Follow these steps to set up and run the project locally.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Ensure you have the following installed:
 
-Follow these steps:
+-   Node.js (LTS version recommended)
+-   npm or Bun (preferred)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Installation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1.  **Clone the repository:**
+    ```bash
+    git clone <YOUR_REPOSITORY_URL>
+    cd Site-portfolio-Inacio
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+3.  **Start the development server:**
+    ```bash
+    npm run dev
+    ```
+    The application will be available at `http://localhost:8080`.
 
-# Step 3: Install the necessary dependencies.
-npm i
+## Project Structure
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+. (root)
+├── public/             # Static assets
+├── src/
+│   ├── App.tsx         # Main application component
+│   ├── main.tsx        # Entry point
+│   ├── index.css       # Global styles
+│   ├── components/     # Reusable UI components
+│   │   ├── sections/   # Major sections of the portfolio
+│   │   └── ui/         # Shadcn/ui components and custom animated elements
+│   ├── context/        # React Context providers (e.g., LocaleContext)
+│   ├── data/           # Centralized data for content (portfolio.ts)
+│   ├── hooks/          # Custom React hooks
+│   ├── lib/            # Utility functions
+│   ├── pages/          # Page components (e.g., Index, NotFound)
+│   └── types/          # TypeScript type definitions
+├── tailwind.config.ts  # Tailwind CSS configuration
+├── vite.config.ts      # Vite build configuration
+└── ...                 # Other configuration files (tsconfig, package.json, etc.)
 ```
 
-**Edit a file directly in GitHub**
+## Customization
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Most of the content displayed on the website is managed through `src/data/portfolio.ts`. You can easily update your personal information, social links, section content, and project details in this file.
 
-**Use GitHub Codespaces**
+-   **Personal Information**: Update `personal` object.
+-   **Navigation & Section Content**: Modify `ptContent` and `enContent` objects for different languages.
+-   **Social Links**: Adjust `socialLinks`.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Deployment
 
-## What technologies are used for this project?
+This project is a static site generated by Vite, making it easy to deploy to various hosting services. You can deploy it to platforms like:
 
-This project is built with:
+-   Netlify
+-   Vercel
+-   GitHub Pages
+-   Firebase Hosting
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+To build the project for production:
 
-## How can I deploy this project?
+```bash
+bun run build
+# or npm run build
+```
 
-Simply open [Lovable](https://lovable.dev/projects/9952d475-2416-4035-bbf7-4fbba2118967) and click on Share -> Publish.
+This will create a `dist` folder with the optimized production build.
 
-## Can I connect a custom domain to my Lovable project?
+## License
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+[MIT License](LICENSE) (Consider adding a LICENSE file if you haven't already)
