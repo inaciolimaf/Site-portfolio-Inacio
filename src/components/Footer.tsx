@@ -81,8 +81,6 @@ export const Footer = () => {
         <div className="border-t border-border/50 mt-8 pt-8 text-center">
           <p className="text-muted-foreground text-sm flex items-center justify-center space-x-2">
             <span>{content.footer.copyright}</span>
-            <Heart className="h-4 w-4 text-red-500 fill-current" />
-            <span>{content.footer.madeWith} React & TypeScript</span>
           </p>
         </div>
       </div>

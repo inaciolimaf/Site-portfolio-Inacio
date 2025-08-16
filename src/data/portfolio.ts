@@ -6,9 +6,9 @@ import { Experience, Project, Certification, Skill, SocialLinks, LocaleContent }
 export type { LocaleContent } from '@/types';
 
 export const socialLinks: SocialLinks = {
-  github: 'https://github.com/inaciofilho',
-  linkedin: 'https://linkedin.com/in/inaciofilho',
-  instagram: 'https://instagram.com/inaciofilho',
+  github: 'https://github.com/inaciolimaf',
+  linkedin: 'https://linkedin.com/in/inaciolimaf',
+  instagram: 'https://instagram.com/inaciosl',
 };
 
 export const skills: Skill[] = [
@@ -100,7 +100,7 @@ export const certifications: Certification[] = [
     },
     issuer: 'NVIDIA',
     date: '2024-08',
-    link: '#',
+    link: 'https://coursera.org/share/19ca107aa8cfe08cb965ce536884a54b',
   },
   {
     id: '2',
@@ -108,9 +108,9 @@ export const certifications: Certification[] = [
       pt: 'TDD - Desenvolvimento de Software Guiado por Testes',
       en: 'TDD - Test-Driven Software Development',
     },
-    issuer: 'Curso Técnico',
+    issuer: 'Coursera',
     date: '2023-08',
-    link: '#',
+    link: 'https://coursera.org/share/19ca107aa8cfe08cb965ce536884a54b',
   },
 ];
 
