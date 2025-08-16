@@ -355,7 +355,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: shimmer 3s ease-in-out infinite;
+    animation: shimmer 10s ease-in-out infinite;
   }
 
   .text-glitch {
