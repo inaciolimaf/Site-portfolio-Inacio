@@ -23,7 +23,7 @@ export const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className={`card-professional p-6 group hover:scale-105 transition-all duration-500 animate-rotate-in hover-gradient w-full ${
+              className={`card-professional p-6 group hover:scale-105 transition-all duration-500 animate-rotate-in w-full ${
                 project.featured ? 'ring-2 ring-primary/20' : ''
               }`}
               style={{ animationDelay: `${index * 0.2}s` }}
