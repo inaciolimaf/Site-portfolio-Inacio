@@ -20,6 +20,7 @@ export default {
 		extend: {
 			fontFamily: {
 				inter: ['Inter', 'system-ui', 'sans-serif'],
+				display: ['Bricolage Grotesque', 'Inter', 'sans-serif'],
 				mono: ['JetBrains Mono', 'monospace'],
 			},
 			colors: {

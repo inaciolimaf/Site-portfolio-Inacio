@@ -11,9 +11,7 @@ import { ScrollProgressBar } from '@/components/ui/AdvancedAnimations';
 import { useLocale } from '@/hooks/useLocale';
 
 const Index = () => {
-  const { locale, content } = useLocale();
-  console.log("Index.tsx - Current locale:", locale);
-  console.log("Index.tsx - Current content (hero greeting):", content.sections.hero.greeting);
+  const { locale } = useLocale();
   return (
     <div key={locale} className="min-h-screen bg-background">
       <ScrollProgressBar />

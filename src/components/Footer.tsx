@@ -1,87 +1,38 @@
 import { useLocale } from '@/hooks/useLocale';
-import { socialLinks } from '@/data/portfolio';
-import { Github, Linkedin, Instagram, Heart } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 
 export const Footer = () => {
   const { content, locale } = useLocale();
-  const currentYear = new Date().getFullYear();
+
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <footer className="bg-secondary/30 py-12 border-t border-border/50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
-          {/* Logo and Name */}
-          <div className="text-center md:text-left">
-            <h3 className="text-2xl font-bold text-hero-gradient mb-2">
-              {content.personal.name}
-            </h3>
-            <p className="text-muted-foreground">
-              {content.personal.title[locale]}
+    <footer className="bg-background py-12">
+      <div className="mx-auto max-w-[1500px] px-6 sm:px-10 lg:px-16">
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <button
+              onClick={scrollTop}
+              className="group flex items-baseline gap-2 font-display text-2xl font-extrabold tracking-tight"
+            >
+              Inácio Filho
+              <span className="h-1.5 w-1.5 translate-y-[-2px] rounded-full bg-[hsl(var(--signal))]" />
+            </button>
+            <p className="mt-2 max-w-sm text-sm text-muted-foreground">
+              {content.personal.title[locale]} · {content.personal.location}
             </p>
           </div>
 
-          {/* Social Links */}
-          <div className="flex space-x-4">
-            {socialLinks.github && (
-              <Button
-                variant="ghost"
-                size="icon"
-                asChild
-                className="hover:text-primary hover:bg-primary/10"
-              >
-                <a
-                  href={socialLinks.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={content.footer.socials.github}
-                >
-                  <Github className="h-5 w-5" />
-                </a>
-              </Button>
-            )}
-            {socialLinks.linkedin && (
-              <Button
-                variant="ghost"
-                size="icon"
-                asChild
-                className="hover:text-primary hover:bg-primary/10"
-              >
-                <a
-                  href={socialLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={content.footer.socials.linkedin}
-                >
-                  <Linkedin className="h-5 w-5" />
-                </a>
-              </Button>
-            )}
-            {socialLinks.instagram && (
-              <Button
-                variant="ghost"
-                size="icon"
-                asChild
-                className="hover:text-primary hover:bg-primary/10"
-              >
-                <a
-                  href={socialLinks.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={content.footer.socials.instagram}
-                >
-                  <Instagram className="h-5 w-5" />
-                </a>
-              </Button>
-            )}
-          </div>
+          <button
+            onClick={scrollTop}
+            className="label-mono text-muted-foreground transition-colors hover:text-[hsl(var(--ink))]"
+          >
+            {locale === 'pt' ? '↑ Voltar ao topo' : '↑ Back to top'}
+          </button>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-border/50 mt-8 pt-8 text-center">
-          <p className="text-muted-foreground text-sm flex items-center justify-center space-x-2">
-            <span>{content.footer.copyright}</span>
-          </p>
+        <div className="mt-10 flex flex-col gap-2 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="label-mono text-muted-foreground">{content.footer.copyright}</p>
+          <p className="label-mono text-muted-foreground">Coreaú · Ceará · BR</p>
         </div>
       </div>
     </footer>

@@ -22,6 +22,7 @@ export const _useProvideLocale = () => {
   useEffect(() => {
     setContent(locale === 'pt' ? ptContent : enContent);
     localStorage.setItem('locale', locale);
+    document.documentElement.lang = locale === 'pt' ? 'pt-BR' : 'en';
   }, [locale]);
 
   const changeLocale = (newLocale: Locale) => {

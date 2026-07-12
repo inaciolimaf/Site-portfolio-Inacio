@@ -1,77 +1,62 @@
 import { useLocale } from '@/hooks/useLocale';
 import { experiences } from '@/data/portfolio';
-import { CalendarDays, MapPin, Building } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+import { Reveal } from '@/components/ui/Reveal';
 
 export const Experience = () => {
   const { content, locale } = useLocale();
 
+  const fmt = (d: string) => {
+    if (/^\d{4}-\d{2}$/.test(d)) {
+      const [y, m] = d.split('-');
+      return `${m}/${y}`;
+    }
+    return d === 'Presente' ? (locale === 'pt' ? 'Presente' : 'Present') : d;
+  };
+
   return (
-    <section id="experience" className="py-20 bg-muted">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-hero-gradient">
-            {content.sections.experience.title}
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {content.sections.experience.subtitle}
-          </p>
-        </div>
+    <section id="experience" className="border-b border-border py-24 sm:py-32">
+      <div className="mx-auto max-w-[1500px] px-6 sm:px-10 lg:px-16">
+        <SectionHeader
+          index="03"
+          label={locale === 'pt' ? 'Trajetória' : 'Career'}
+          title={content.sections.experience.title}
+          subtitle={content.sections.experience.subtitle}
+        />
 
-        <div className="max-w-4xl mx-auto">
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-primary/30 hidden sm:block"></div>
-
-            {experiences.map((experience, index) => (
-              <div
-                key={experience.id}
-                className="relative mb-12 animate-fade-in"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                {/* Timeline Dot */}
-                <div className="absolute left-6 w-4 h-4 bg-primary rounded-full border-4 border-background hidden sm:block"></div>
-
-                {/* Content Card */}
-                <div className="card-professional p-6 ml-0 sm:ml-20">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                    <div>
-                      <h3 className="text-xl font-semibold text-foreground mb-1">
-                        {experience.position[locale]}
-                      </h3>
-                      <div className="flex items-center space-x-2 text-muted-foreground">
-                        <Building className="h-4 w-4" />
-                        <span>{experience.company}</span>
-                        {experience.current && (
-                          <Badge variant="secondary" className="ml-2">
-                            {content.sections.experience.current}
-                          </Badge>
-                        )}
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-2 text-sm text-muted-foreground mt-2 md:mt-0">
-                      <CalendarDays className="h-4 w-4" />
-                      <span>
-                        {experience.startDate} - {experience.endDate}
-                      </span>
-                    </div>
-                  </div>
-
-                  <p className="text-foreground/80 mb-4 leading-relaxed">
-                    {experience.description[locale]}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {experience.technologies.map((tech) => (
-                      <Badge key={tech} variant="outline" className="text-xs">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
+        <div className="border-t border-border">
+          {experiences.map((exp) => (
+            <Reveal key={exp.id}>
+              <article className="group grid gap-6 border-b border-border py-10 md:grid-cols-[minmax(0,220px)_1fr] md:gap-12">
+                <div className="flex flex-col gap-2">
+                  <span className="label-mono text-muted-foreground">
+                    {fmt(exp.startDate)} — {fmt(exp.endDate)}
+                  </span>
+                  {exp.current && (
+                    <span className="inline-flex w-fit items-center gap-2 label-mono text-[hsl(var(--signal))]">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[hsl(var(--signal))]" />
+                      {content.sections.experience.current}
+                    </span>
+                  )}
                 </div>
-              </div>
-            ))}
-          </div>
+
+                <div>
+                  <h3 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
+                    {exp.position[locale]}
+                  </h3>
+                  <p className="mt-1 text-lg text-muted-foreground">{exp.company}</p>
+                  <p className="mt-4 max-w-2xl leading-relaxed text-foreground/80">
+                    {exp.description[locale]}
+                  </p>
+                  <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-2">
+                    {exp.technologies.map((t) => (
+                      <li key={t} className="label-mono text-muted-foreground">{t}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

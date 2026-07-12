@@ -1,130 +1,100 @@
-import { useState } from 'react';
-import { Menu, X, Globe } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useEffect, useState } from 'react';
+import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { useLocale, Locale } from '@/hooks/useLocale';
+import { useLocale } from '@/hooks/useLocale';
 
 export const Header = () => {
   const { content, locale, changeLocale } = useLocale();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const navigation = [
-    { name: content.navigation.home, href: '#home' },
     { name: content.navigation.about, href: '#about' },
-    { name: content.navigation.skills, href: '#skills' },
     { name: content.navigation.experience, href: '#experience' },
     { name: content.navigation.projects, href: '#projects' },
-    { name: content.navigation.certifications, href: '#certifications' },
     { name: content.navigation.contact, href: '#contact' },
   ];
 
-  const handleLanguageToggle = () => {
-    changeLocale(locale === 'pt' ? 'en' : 'pt');
-  };
-
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <a 
-              href="#home"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('#home');
-              }}
-              className="text-2xl font-bold text-hero-gradient hover:opacity-80 transition-opacity"
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        scrolled ? 'border-b border-border bg-background/85 backdrop-blur-md' : 'border-b border-transparent'
+      }`}
+    >
+      <div className="mx-auto flex h-16 max-w-[1500px] items-center justify-between px-6 sm:px-10 lg:px-16">
+        {/* monogram */}
+        <a
+          href="#home"
+          onClick={(e) => { e.preventDefault(); scrollToSection('#home'); }}
+          className="group flex items-baseline gap-2"
+        >
+          <span className="font-display text-lg font-extrabold tracking-tight">Inácio Filho</span>
+          <span className="h-1.5 w-1.5 translate-y-[-1px] rounded-full bg-[hsl(var(--signal))]" />
+        </a>
+
+        {/* desktop nav */}
+        <nav className="hidden items-center gap-8 md:flex">
+          {navigation.map((item, i) => (
+            <a
+              key={item.name}
+              href={item.href}
+              onClick={(e) => { e.preventDefault(); scrollToSection(item.href); }}
+              className="label-mono text-muted-foreground transition-colors hover:text-[hsl(var(--ink))]"
             >
-              {content.personal.name}
+              <span className="text-[hsl(var(--signal))]">{String(i + 1).padStart(2, '0')}</span>{' '}
+              {item.name}
             </a>
-          </div>
+          ))}
+        </nav>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.href);
-                }}
-                className="text-foreground/70 hover:text-primary transition-colors relative group py-2"
-              >
-                {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
-          </nav>
-
-          {/* Desktop Controls */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={handleLanguageToggle}
-              className="h-10 w-10 hover:bg-secondary/80"
-              aria-label={content.header.toggleLanguage}
-            >
-              <Globe className="h-5 w-5" />
-            </Button>
-            <ThemeToggle />
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={handleLanguageToggle}
-              className="h-10 w-10"
-              aria-label={content.header.toggleLanguage}
-            >
-              <Globe className="h-5 w-5" />
-            </Button>
-            <ThemeToggle />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="h-10 w-10"
-              aria-label={content.header.toggleMenu}
-            >
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
-          </div>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={() => changeLocale(locale === 'pt' ? 'en' : 'pt')}
+            className="label-mono px-2 py-1 text-muted-foreground transition-colors hover:text-[hsl(var(--ink))]"
+            aria-label={content.header.toggleLanguage}
+          >
+            <span className={locale === 'pt' ? 'text-[hsl(var(--ink))]' : ''}>PT</span>
+            <span className="mx-1 opacity-40">/</span>
+            <span className={locale === 'en' ? 'text-[hsl(var(--ink))]' : ''}>EN</span>
+          </button>
+          <ThemeToggle />
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="flex h-10 w-10 items-center justify-center md:hidden"
+            aria-label={content.header.toggleMenu}
+          >
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
-
-        {/* Mobile menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border/50">
-            <nav className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(item.href);
-                  }}
-                  className="block px-3 py-2 text-base font-medium text-foreground/70 hover:text-primary hover:bg-secondary/50 rounded-md transition-all"
-                >
-                  {item.name}
-                </a>
-              ))}
-            </nav>
-          </div>
-        )}
       </div>
+
+      {isMenuOpen && (
+        <nav className="border-t border-border bg-background/95 px-6 py-4 backdrop-blur-md md:hidden">
+          {navigation.map((item, i) => (
+            <a
+              key={item.name}
+              href={item.href}
+              onClick={(e) => { e.preventDefault(); scrollToSection(item.href); }}
+              className="flex items-center gap-3 py-3 font-display text-2xl font-bold"
+            >
+              <span className="label-mono text-[hsl(var(--signal))]">{String(i + 1).padStart(2, '0')}</span>
+              {item.name}
+            </a>
+          ))}
+        </nav>
+      )}
     </header>
   );
 };

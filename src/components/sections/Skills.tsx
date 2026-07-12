@@ -1,86 +1,53 @@
 import { useLocale } from '@/hooks/useLocale';
 import { skills } from '@/data/portfolio';
-import { 
-  Monitor, 
-  Server, 
-  Database, 
-  Settings, 
-  Cpu 
-} from 'lucide-react';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+import { Reveal } from '@/components/ui/Reveal';
 
-const categoryIcons = {
-  frontend: Monitor,
-  backend: Server,
-  database: Database,
-  tools: Settings,
-  other: Cpu,
-};
-
-const categoryColors = {
-  frontend: 'bg-blue-500/10 text-blue-600 dark:text-blue-400',
-  backend: 'bg-green-500/10 text-green-600 dark:text-green-400',
-  database: 'bg-purple-500/10 text-purple-600 dark:text-purple-400',
-  tools: 'bg-orange-500/10 text-orange-600 dark:text-orange-400',
-  other: 'bg-pink-500/10 text-pink-600 dark:text-pink-400',
-};
+const order = ['frontend', 'backend', 'database', 'tools', 'other'] as const;
 
 export const Skills = () => {
   const { content, locale } = useLocale();
 
-  const groupedSkills = skills.reduce((acc, skill) => {
-    if (!acc[skill.category]) {
-      acc[skill.category] = [];
-    }
-    acc[skill.category].push(skill);
+  const grouped = skills.reduce((acc, s) => {
+    (acc[s.category] ||= []).push(s);
     return acc;
   }, {} as Record<string, typeof skills>);
 
   return (
-    <section id="skills" className="py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-hero-gradient">
-            {content.sections.skills.title}
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {content.sections.skills.subtitle}
-          </p>
-        </div>
+    <section id="skills" className="border-b border-border py-24 sm:py-32">
+      <div className="mx-auto max-w-[1500px] px-6 sm:px-10 lg:px-16">
+        <SectionHeader
+          index="02"
+          label={locale === 'pt' ? 'Stack' : 'Stack'}
+          title={content.sections.skills.title}
+          subtitle={content.sections.skills.subtitle}
+        />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {Object.entries(groupedSkills).map(([category, categorySkills], index) => {
-            const IconComponent = categoryIcons[category as keyof typeof categoryIcons];
-            const colorClass = categoryColors[category as keyof typeof categoryColors];
-            
-            return (
-              <div
-                key={category}
-                className="card-professional p-6 animate-scale-in hover-lift hover-gradient group"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className={`p-2 rounded-lg ${colorClass}`}>
-                    <IconComponent className="h-6 w-6" />
-                  </div>
-                  <h3 className="text-lg font-semibold capitalize">
+        <div className="border-t border-border">
+          {order.filter((c) => grouped[c]?.length).map((category, i) => (
+            <Reveal key={category} delay={i * 0.05}>
+              <div className="grid gap-4 border-b border-border py-8 md:grid-cols-[minmax(0,240px)_1fr] md:gap-10">
+                <div className="flex items-baseline gap-3">
+                  <span className="label-mono text-muted-foreground">{String(i + 1).padStart(2, '0')}</span>
+                  <h3 className="font-display text-xl font-semibold tracking-tight">
                     {content.sections.skills.categories[category as keyof typeof content.sections.skills.categories]}
                   </h3>
                 </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {categorySkills.map((skill, skillIndex) => (
-                    <span
+                <ul className="flex flex-wrap items-baseline gap-x-6 gap-y-3">
+                  {grouped[category].map((skill) => (
+                    <li
                       key={skill.name}
-                      className="px-3 py-1 bg-secondary/50 hover:bg-secondary hover:scale-105 text-secondary-foreground rounded-full text-sm transition-all duration-300 cursor-default animate-bounce-in"
-                      style={{ animationDelay: `${(index * 0.1) + (skillIndex * 0.05)}s` }}
+                      className="group cursor-default text-lg text-foreground/80 transition-colors hover:text-foreground sm:text-xl"
                     >
-                      {skill.name}
-                    </span>
+                      <span className="bg-[linear-gradient(hsl(var(--signal)),hsl(var(--signal)))] bg-[length:0%_2px] bg-left-bottom bg-no-repeat pb-1 transition-[background-size] duration-300 group-hover:bg-[length:100%_2px]">
+                        {skill.name}
+                      </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
-            );
-          })}
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

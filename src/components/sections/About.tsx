@@ -1,75 +1,70 @@
 import { useLocale } from '@/hooks/useLocale';
-import { MapPin, GraduationCap } from 'lucide-react';
-import { AnimatedCounter } from '@/components/ui/AnimatedElements';
+import { SectionHeader } from '@/components/ui/SectionHeader';
+import { Reveal } from '@/components/ui/Reveal';
 
 export const About = () => {
   const { content, locale } = useLocale();
-  console.log("About.tsx - Current locale:", locale);
-  console.log("About.tsx - About title:", content.sections.about.title);
+  const paragraphs = content.about.split('\n\n');
+
+  const facts = [
+    { k: locale === 'pt' ? 'Local' : 'Location', v: content.personal.location },
+    { k: locale === 'pt' ? 'Formação' : 'Education', v: content.personal.university },
+    { k: 'E-mail', v: content.personal.email },
+  ];
+
+  const stats = [
+    { n: '3+', l: content.sections.about.yearsExperience },
+    { n: '85%+', l: locale === 'pt' ? 'Cobertura de testes' : 'Test coverage' },
+    { n: '100%', l: locale === 'pt' ? 'Entregas no prazo' : 'On-time delivery' },
+  ];
+
   return (
-    <section id="about" className="py-20 bg-muted">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-hero-gradient">
-              {content.sections.about.title}
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              {content.sections.about.content}
-            </p>
-          </div>
+    <section id="about" className="border-b border-border py-24 sm:py-32">
+      <div className="mx-auto max-w-[1500px] px-6 sm:px-10 lg:px-16">
+        <SectionHeader
+          index="01"
+          label={locale === 'pt' ? 'Sobre' : 'About'}
+          title={content.sections.about.title}
+          subtitle={content.sections.about.content}
+        />
 
-          {/* Content Grid */}
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left Column - About Text */}
-            <div className="animate-slide-in-left">
-              <div className="prose prose-lg max-w-none">
-                {content.about.split('\n\n').map((paragraph, index) => (
-                  <p key={index} className="text-foreground/80 leading-relaxed mb-6">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            </div>
+        <div className="grid gap-16 lg:grid-cols-[1.5fr_1fr]">
+          {/* narrative */}
+          <Reveal className="max-w-2xl">
+            {paragraphs.map((p, i) => (
+              <p
+                key={i}
+                className={`leading-relaxed text-foreground/85 ${
+                  i === 0 ? 'text-xl sm:text-2xl font-display font-medium tracking-tight text-foreground' : 'mt-6 text-base sm:text-lg'
+                }`}
+              >
+                {p}
+              </p>
+            ))}
+          </Reveal>
 
-            {/* Right Column - Personal Info */}
-            <div className="animate-slide-in-right">
-              <div className="card-professional p-8 space-y-6">
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-semibold text-foreground mb-6">
-                    {content.sections.about.personalDetails}
-                  </h3>
-                  
-                  <div className="flex items-center space-x-3">
-                    <MapPin className="h-5 w-5 text-primary flex-shrink-0" />
-                    <span className="text-foreground/80">{content.personal.location}</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-3">
-                    <GraduationCap className="h-5 w-5 text-primary flex-shrink-0" />
-                    <span className="text-foreground/80">{content.personal.university}</span>
-                  </div>
+          {/* index card + stats */}
+          <Reveal delay={0.1}>
+            <dl className="divide-y divide-border border-y border-border">
+              {facts.map((f) => (
+                <div key={f.k} className="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:justify-between">
+                  <dt className="label-mono text-muted-foreground">{f.k}</dt>
+                  <dd className="text-sm sm:text-right sm:text-base">{f.v}</dd>
                 </div>
+              ))}
+            </dl>
 
-                {/* Stats */}
-                <div className="grid grid-cols-2 gap-6 pt-6 border-t border-border/50">
-                  <div className="text-center animate-bounce-in animate-delay-200">
-                    <div className="text-2xl font-bold text-primary">
-                      <AnimatedCounter end={2} suffix="+" />
-                    </div>
-                    <div className="text-sm text-muted-foreground">{content.sections.about.yearsExperience}</div>
+            <div className="mt-10 grid grid-cols-3 gap-4">
+              {stats.map((s) => (
+                <div key={s.l}>
+                  <div className="font-display text-3xl font-bold tracking-tight text-[hsl(var(--signal))] sm:text-4xl">
+                    {s.n}
                   </div>
-                  <div className="text-center animate-bounce-in animate-delay-400">
-                    <div className="text-2xl font-bold text-primary">
-                      <AnimatedCounter end={10} suffix="+" />
-                    </div>
-                    <div className="text-sm text-muted-foreground">{content.sections.about.completedProjects}</div>
-                  </div>
+                  <div className="mt-1 text-xs leading-snug text-muted-foreground">{s.l}</div>
                 </div>
-              </div>
+              ))}
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
