@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 import { useLocale } from '@/hooks/useLocale';
 import { projects } from '@/data/portfolio';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Reveal } from '@/components/ui/Reveal';
 
@@ -46,14 +47,23 @@ export const Projects = () => {
 
                   <div>
                     <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                      <a
-                        href={primary}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-display text-3xl font-bold tracking-tight transition-colors group-hover:text-[hsl(var(--signal))] sm:text-5xl"
-                      >
-                        {project.name[locale]}
-                      </a>
+                      {project.caseStudy ? (
+                        <Link
+                          to={project.caseStudy}
+                          className="font-display text-3xl font-bold tracking-tight transition-colors group-hover:text-[hsl(var(--signal))] sm:text-5xl"
+                        >
+                          {project.name[locale]}
+                        </Link>
+                      ) : (
+                        <a
+                          href={primary}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-display text-3xl font-bold tracking-tight transition-colors group-hover:text-[hsl(var(--signal))] sm:text-5xl"
+                        >
+                          {project.name[locale]}
+                        </a>
+                      )}
                       {project.featured && (
                         <span className="label-mono text-[hsl(var(--signal))]">
                           {content.sections.projects.featured}
@@ -90,6 +100,15 @@ export const Projects = () => {
                   </div>
 
                   <div className="flex flex-col gap-2 md:items-end">
+                    {project.caseStudy && (
+                      <Link
+                        to={project.caseStudy}
+                        className="flex items-center gap-1.5 label-mono text-[hsl(var(--signal))] transition-opacity hover:opacity-70"
+                      >
+                        {locale === 'pt' ? 'Estudo de caso' : 'Case study'}
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    )}
                     {project.demo && (
                       <a
                         href={project.demo}

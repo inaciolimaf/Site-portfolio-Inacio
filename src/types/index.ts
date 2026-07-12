@@ -42,6 +42,8 @@ export interface Project {
   github?: string;
   demo?: string;
   image?: string;
+  /** Internal route to a full case-study page, e.g. "/inkstave" */
+  caseStudy?: string;
   featured?: boolean;
 }
 

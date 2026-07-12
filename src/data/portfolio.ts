@@ -124,6 +124,7 @@ export const projects: Project[] = [
     github: 'https://github.com/inaciolimaf/inkstave',
     demo: 'https://inkstave.inaciof.com',
     image: '/projects/inkstave.jpg',
+    caseStudy: '/inkstave',
     featured: true,
   },
   {
