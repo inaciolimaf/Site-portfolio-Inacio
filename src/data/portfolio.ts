@@ -156,6 +156,21 @@ export const projects: Project[] = [
     demo: 'https://leitores-competentes.inaciof.com',
     featured: true,
   },
+  {
+    id: 'visao-sisu',
+    name: {
+      pt: 'VisaoSISU',
+      en: 'VisaoSISU',
+    },
+    description: {
+      pt: 'Site para visualização das notas de corte anteriores do SISU, facilitando a consulta histórica para estudantes.',
+      en: 'Website for viewing previous SISU cutoff scores, making historical consultation easier for students.',
+    },
+    startDate: '2024',
+    endDate: '2024',
+    technologies: ['JavaScript', 'HTML', 'CSS'],
+    github: 'https://github.com/inaciolimaf/VisaoSISU',
+  },
 ];
 
 export const certifications: Certification[] = [
