@@ -74,26 +74,28 @@ export const Hero = () => {
         </div>
 
         {/* headline block */}
-        <div className="flex flex-1 flex-col justify-center py-10">
-          <div className="mb-6 flex items-center gap-4">
-            <span className="h-px w-12 bg-[hsl(var(--signal))]" />
+        <div className="flex flex-1 flex-col justify-center py-8 sm:py-10">
+          <div className="mb-5 flex items-center gap-4 sm:mb-6">
+            <span className="h-px w-10 bg-[hsl(var(--signal))] sm:w-12" />
             <span className="label-mono text-[hsl(var(--signal))]">
               {content.personal.title[locale]}
             </span>
           </div>
 
-          {/* the signature: kinetic WebGL type, or a static echo of it */}
-          <div className="relative h-[34vh] min-h-[220px] w-full sm:h-[42vh]">
-            {webgl ? (
+          {/* the signature: kinetic WebGL type, or a static echo of it.
+              The fixed height only exists to size the WebGL canvas; the static
+              fallback sizes itself so mobile doesn't get big empty gaps. */}
+          {webgl ? (
+            <div className="relative h-[42vh] min-h-[280px] w-full">
               <Suspense fallback={<StaticHeadline lines={nameLines} />}>
                 <KineticHeadline lines={nameLines} ink={ink} signal={signal} />
               </Suspense>
-            ) : (
-              <StaticHeadline lines={nameLines} />
-            )}
-          </div>
+            </div>
+          ) : (
+            <StaticHeadline lines={nameLines} />
+          )}
 
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-8 sm:text-lg">
             {content.sections.hero.description}
           </p>
         </div>
@@ -139,12 +141,12 @@ export const Hero = () => {
 
 function StaticHeadline({ lines }: { lines: string[] }) {
   return (
-    <div className="flex h-full flex-col justify-center">
+    <div className="flex flex-col">
       {lines.map((line, i) => (
         <span
           key={i}
-          className="font-display font-bold uppercase leading-[0.86] tracking-[-0.02em] text-[hsl(var(--ink))]"
-          style={{ fontSize: 'clamp(3.5rem, 14vw, 12rem)' }}
+          className="font-display font-bold uppercase leading-[0.9] tracking-[-0.02em] text-[hsl(var(--ink))]"
+          style={{ fontSize: 'clamp(3.25rem, 16vw, 12rem)' }}
         >
           {line}
         </span>
