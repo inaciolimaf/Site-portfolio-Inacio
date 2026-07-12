@@ -7,17 +7,18 @@ const KineticHeadline = lazy(() =>
   import('@/components/webgl/KineticHeadline').then((m) => ({ default: m.KineticHeadline }))
 );
 
-// Prefer the WebGL signature on capable devices; fall back to static type on
-// touch / reduced-motion where the interaction can't be felt anyway.
-function useCanRenderWebGL() {
-  const [ok, setOk] = useState(false);
+// Render the WebGL signature everywhere except when the user asks for reduced
+// motion. On devices without a fine pointer (touch), run it in "auto" mode:
+// the type animates on its own (a virtual cursor orbits it) and also reacts to
+// dragging a finger — so phones get the motion too, not a static fallback.
+function useHeadlineMode() {
+  const [mode, setMode] = useState({ webgl: false, auto: false });
   useEffect(() => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const coarse = window.matchMedia('(pointer: coarse)').matches;
-    const small = window.innerWidth < 768;
-    setOk(!reduce && !coarse && !small);
+    const fine = window.matchMedia('(pointer: fine)').matches;
+    setMode({ webgl: !reduce, auto: !fine });
   }, []);
-  return ok;
+  return mode;
 }
 
 function useInkColors() {
@@ -37,7 +38,7 @@ function useInkColors() {
 
 export const Hero = () => {
   const { content, locale } = useLocale();
-  const webgl = useCanRenderWebGL();
+  const { webgl, auto } = useHeadlineMode();
   const { ink, signal } = useInkColors();
 
   const nameLines = content.personal.name.toUpperCase().split(' ');
@@ -88,7 +89,7 @@ export const Hero = () => {
           {webgl ? (
             <div className="relative h-[42vh] min-h-[280px] w-full">
               <Suspense fallback={<StaticHeadline lines={nameLines} />}>
-                <KineticHeadline lines={nameLines} ink={ink} signal={signal} />
+                <KineticHeadline lines={nameLines} ink={ink} signal={signal} auto={auto} />
               </Suspense>
             </div>
           ) : (

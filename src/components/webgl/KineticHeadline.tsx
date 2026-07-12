@@ -13,6 +13,8 @@ interface KineticHeadlineProps {
   lines: string[];
   ink: string;
   signal: string;
+  /** Autonomous mode for touch devices: animate on its own + react to finger drag. */
+  auto?: boolean;
 }
 
 const vertexShader = /* glsl */ `
@@ -125,10 +127,11 @@ function makeTextTexture(lines: string[], w: number, h: number) {
   return tex;
 }
 
-function Plane({ lines, ink, signal }: KineticHeadlineProps) {
+function Plane({ lines, ink, signal, auto = false }: KineticHeadlineProps) {
   const { viewport, size } = useThree();
   const matRef = useRef<THREE.ShaderMaterial>(null);
   const target = useRef({ x: 0.5, y: 0.5, hover: 0 });
+  const lastPointer = useRef(-Infinity);
   const [tex, setTex] = useState<THREE.Texture | null>(null);
 
   const inkColor = useMemo(() => new THREE.Color(ink), [ink]);
@@ -168,6 +171,17 @@ function Plane({ lines, ink, signal }: KineticHeadlineProps) {
   useFrame((_, delta) => {
     const u = uniforms;
     u.uTime.value += delta;
+    const t = u.uTime.value;
+
+    // In auto mode (touch), when the finger isn't active a "virtual cursor"
+    // orbits the type so it keeps moving on its own; a finger drag takes over.
+    const pointerActive = t - lastPointer.current < 1.4;
+    if (auto && !pointerActive) {
+      target.current.x = 0.5 + 0.26 * Math.cos(t * 0.45);
+      target.current.y = 0.5 + 0.16 * Math.sin(t * 0.72);
+      target.current.hover = 0.62;
+    }
+
     const m = u.uMouse.value as THREE.Vector2;
     // ease pointer + hover toward their targets
     m.x += (target.current.x - m.x) * Math.min(1, delta * 8);
@@ -180,12 +194,14 @@ function Plane({ lines, ink, signal }: KineticHeadlineProps) {
     target.current.x = e.uv.x;
     target.current.y = e.uv.y;
     target.current.hover = 1;
+    lastPointer.current = uniforms.uTime.value;
   };
 
   return (
     <mesh
       onPointerMove={onMove}
-      onPointerLeave={() => { target.current.hover = 0; }}
+      onPointerDown={onMove}
+      onPointerLeave={() => { if (!auto) target.current.hover = 0; }}
     >
       <planeGeometry args={[viewport.width, viewport.height, 1, 1]} />
       <shaderMaterial
@@ -200,7 +216,7 @@ function Plane({ lines, ink, signal }: KineticHeadlineProps) {
   );
 }
 
-export function KineticHeadline({ lines, ink, signal }: KineticHeadlineProps) {
+export function KineticHeadline({ lines, ink, signal, auto = false }: KineticHeadlineProps) {
   return (
     <Canvas
       orthographic
@@ -209,7 +225,7 @@ export function KineticHeadline({ lines, ink, signal }: KineticHeadlineProps) {
       dpr={[1, 2]}
       style={{ width: '100%', height: '100%', display: 'block' }}
     >
-      <Plane lines={lines} ink={ink} signal={signal} />
+      <Plane lines={lines} ink={ink} signal={signal} auto={auto} />
     </Canvas>
   );
 }
