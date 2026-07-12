@@ -5,7 +5,7 @@ export const ScrollProgressBar = () => {
   const progress = useScrollProgress();
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] h-0.5 bg-transparent">
+    <div aria-hidden="true" className="fixed top-0 left-0 right-0 z-[60] h-0.5 bg-transparent">
       <div
         className="h-full bg-[hsl(var(--signal))] transition-all duration-150 ease-out"
         style={{ width: `${progress * 100}%` }}

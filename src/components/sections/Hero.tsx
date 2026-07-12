@@ -76,7 +76,12 @@ export const Hero = () => {
 
         {/* headline block */}
         <div className="flex flex-1 flex-col justify-center py-8 sm:py-10">
-          <div className="mb-5 flex items-center gap-4 sm:mb-6">
+          {/* Accessible name/heading — the visual below is decorative (canvas/echo) */}
+          <h1 className="sr-only">
+            {content.personal.name} — {content.personal.title[locale]}
+          </h1>
+
+          <div className="mb-5 flex items-center gap-4 sm:mb-6" aria-hidden="true">
             <span className="h-px w-10 bg-[hsl(var(--signal))] sm:w-12" />
             <span className="label-mono text-[hsl(var(--signal))]">
               {content.personal.title[locale]}
@@ -86,15 +91,17 @@ export const Hero = () => {
           {/* the signature: kinetic WebGL type, or a static echo of it.
               The fixed height only exists to size the WebGL canvas; the static
               fallback sizes itself so mobile doesn't get big empty gaps. */}
-          {webgl ? (
-            <div className="relative h-[42vh] min-h-[280px] w-full">
-              <Suspense fallback={<StaticHeadline lines={nameLines} />}>
-                <KineticHeadline lines={nameLines} ink={ink} signal={signal} auto={auto} />
-              </Suspense>
-            </div>
-          ) : (
-            <StaticHeadline lines={nameLines} />
-          )}
+          <div aria-hidden="true">
+            {webgl ? (
+              <div className="relative h-[42vh] min-h-[280px] w-full">
+                <Suspense fallback={<StaticHeadline lines={nameLines} />}>
+                  <KineticHeadline lines={nameLines} ink={ink} signal={signal} auto={auto} />
+                </Suspense>
+              </div>
+            ) : (
+              <StaticHeadline lines={nameLines} />
+            )}
+          </div>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-8 sm:text-lg">
             {content.sections.hero.description}

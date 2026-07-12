@@ -45,7 +45,7 @@ export const Header = () => {
         </a>
 
         {/* desktop nav */}
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav aria-label={locale === 'pt' ? 'Navegação principal' : 'Main navigation'} className="hidden items-center gap-8 md:flex">
           {navigation.map((item, i) => (
             <a
               key={item.name}
@@ -53,7 +53,7 @@ export const Header = () => {
               onClick={(e) => { e.preventDefault(); scrollToSection(item.href); }}
               className="label-mono text-muted-foreground transition-colors hover:text-[hsl(var(--ink))]"
             >
-              <span className="text-[hsl(var(--signal))]">{String(i + 1).padStart(2, '0')}</span>{' '}
+              <span aria-hidden="true" className="text-[hsl(var(--signal))]">{String(i + 1).padStart(2, '0')}</span>{' '}
               {item.name}
             </a>
           ))}
@@ -74,6 +74,8 @@ export const Header = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="flex h-10 w-10 items-center justify-center md:hidden"
             aria-label={content.header.toggleMenu}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-nav"
           >
             {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -81,7 +83,7 @@ export const Header = () => {
       </div>
 
       {isMenuOpen && (
-        <nav className="border-t border-border bg-background/95 px-6 py-4 backdrop-blur-md md:hidden">
+        <nav id="mobile-nav" aria-label={locale === 'pt' ? 'Navegação principal' : 'Main navigation'} className="border-t border-border bg-background/95 px-6 py-4 backdrop-blur-md md:hidden">
           {navigation.map((item, i) => (
             <a
               key={item.name}
