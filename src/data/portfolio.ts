@@ -107,6 +107,7 @@ export const projects: Project[] = [
     startDate: '2026',
     technologies: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion', 'JavaScript'],
     github: 'https://github.com/inaciolimaf/gcp-developer-exam-trainer-',
+    image: '/projects/gcp-cloud-quest.jpg',
   },
   {
     id: 'inkstave',
@@ -122,6 +123,7 @@ export const projects: Project[] = [
     technologies: ['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'React', 'LangGraph', 'Docker'],
     github: 'https://github.com/inaciolimaf/inkstave',
     demo: 'https://inkstave.inaciof.com',
+    image: '/projects/inkstave.jpg',
     featured: true,
   },
   {
@@ -138,6 +140,7 @@ export const projects: Project[] = [
     technologies: ['Python', 'FastAPI', 'PostgreSQL', 'React', 'TypeScript', 'Docker'],
     github: 'https://github.com/inaciolimaf/QuadroPublico',
     demo: 'https://quadro-publico.inaciof.com',
+    image: '/projects/quadro-publico.jpg',
     featured: true,
   },
   {
@@ -154,6 +157,7 @@ export const projects: Project[] = [
     technologies: ['Python', 'FastAPI', 'React', 'TypeScript', 'IA/LLM', 'Docker'],
     github: 'https://github.com/inaciolimaf/leitores-competentes',
     demo: 'https://leitores-competentes.inaciof.com',
+    image: '/projects/leitores-competentes.jpg',
     featured: true,
   },
   {

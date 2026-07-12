@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 import { useLocale } from '@/hooks/useLocale';
 import { projects } from '@/data/portfolio';
 import { ArrowUpRight } from 'lucide-react';
@@ -6,6 +8,18 @@ import { Reveal } from '@/components/ui/Reveal';
 
 export const Projects = () => {
   const { content, locale } = useLocale();
+
+  // Fine pointer (desktop/mouse) → floating preview that follows the cursor.
+  // Touch → show the preview inline, since there's no hover to trigger it.
+  const [fine] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches
+  );
+
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const x = useSpring(mx, { stiffness: 350, damping: 30, mass: 0.4 });
+  const y = useSpring(my, { stiffness: 350, damping: 30, mass: 0.4 });
+  const [preview, setPreview] = useState<{ src: string; alt: string } | null>(null);
 
   return (
     <section id="projects" className="border-b border-border py-24 sm:py-32">
@@ -22,7 +36,12 @@ export const Projects = () => {
             const primary = project.demo || project.github;
             return (
               <Reveal key={project.id}>
-                <article className="group grid gap-4 border-b border-border py-8 transition-colors hover:bg-[hsl(var(--signal))]/[0.04] md:grid-cols-[minmax(0,64px)_1fr_auto] md:items-baseline md:gap-8">
+                <article
+                  className="group grid gap-4 border-b border-border py-8 transition-colors hover:bg-[hsl(var(--signal))]/[0.04] md:grid-cols-[minmax(0,64px)_1fr_auto] md:items-baseline md:gap-8"
+                  onMouseEnter={() => fine && project.image && setPreview({ src: project.image, alt: project.name[locale] })}
+                  onMouseMove={(e) => { mx.set(e.clientX); my.set(e.clientY); }}
+                  onMouseLeave={() => setPreview(null)}
+                >
                   <span className="label-mono text-muted-foreground">{String(i + 1).padStart(2, '0')}</span>
 
                   <div>
@@ -41,9 +60,28 @@ export const Projects = () => {
                         </span>
                       )}
                     </div>
+
                     <p className="mt-3 max-w-2xl leading-relaxed text-foreground/75">
                       {project.description[locale]}
                     </p>
+
+                    {/* inline preview for touch devices */}
+                    {!fine && project.image && (
+                      <a
+                        href={primary}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-5 block overflow-hidden rounded-sm border border-border"
+                      >
+                        <img
+                          src={project.image}
+                          alt={project.name[locale]}
+                          loading="lazy"
+                          className="aspect-[16/10] w-full object-cover object-top"
+                        />
+                      </a>
+                    )}
+
                     <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
                       {project.technologies.map((t) => (
                         <li key={t} className="label-mono text-muted-foreground">{t}</li>
@@ -85,6 +123,36 @@ export const Projects = () => {
           </div>
         </div>
       </div>
+
+      {/* floating cursor preview (desktop) */}
+      {fine && (
+        <AnimatePresence>
+          {preview && (
+            <motion.div
+              className="pointer-events-none fixed left-0 top-0 z-40 hidden md:block"
+              style={{ x, y }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.18 }}
+            >
+              <motion.div
+                className="w-[24rem] -translate-x-1/2 -translate-y-[118%] overflow-hidden rounded-sm border border-border bg-card shadow-2xl"
+                initial={{ scale: 0.92, rotate: -1.5 }}
+                animate={{ scale: 1, rotate: -1.5 }}
+                exit={{ scale: 0.92 }}
+                transition={{ type: 'spring', stiffness: 320, damping: 26 }}
+              >
+                <img
+                  src={preview.src}
+                  alt={preview.alt}
+                  className="aspect-[16/10] w-full object-cover object-top"
+                />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
     </section>
   );
 };
