@@ -199,6 +199,16 @@ export const certifications: Certification[] = [
     date: '2023-08',
     link: 'https://www.coursera.org/account/accomplishments/verify/U7SSCUEEM2K2',
   },
+  {
+    id: '3',
+    name: {
+      pt: 'Professional Cloud Developer Certification',
+      en: 'Professional Cloud Developer Certification',
+    },
+    issuer: 'Google Cloud',
+    date: '2026-08',
+    link: 'https://www.credly.com/badges/91472da7-9b3f-4adf-8138-61f9feb0fab0/linked_in?t=tjshv6',
+  },
 ];
 
 // Localization Content
