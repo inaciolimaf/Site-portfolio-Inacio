@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import CaseInkstave from "./pages/CaseInkstave";
+import Links from "./pages/Links";
 import NotFound from "./pages/NotFound";
 import { LocaleProvider } from "@/context/LocaleContext";
 
@@ -20,6 +21,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/inkstave" element={<CaseInkstave />} />
+            <Route path="/links" element={<Links />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

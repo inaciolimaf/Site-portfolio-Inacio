@@ -8,7 +8,6 @@ export type { LocaleContent } from '@/types';
 export const socialLinks: SocialLinks = {
   github: 'https://github.com/inaciolimaf',
   linkedin: 'https://linkedin.com/in/inaciolimaf',
-  instagram: 'https://instagram.com/inaciosl',
 };
 
 export const skills: Skill[] = [
@@ -24,21 +23,28 @@ export const skills: Skill[] = [
   { name: 'Python', category: 'backend' },
   { name: 'Django', category: 'backend' },
   { name: 'Django REST Framework', category: 'backend' },
+  { name: 'FastAPI', category: 'backend' },
   { name: 'Node.js', category: 'backend' },
   { name: 'Express', category: 'backend' },
   { name: 'APIs RESTful', category: 'backend' },
-  
+
   // Database
   { name: 'PostgreSQL', category: 'database' },
-  
+  { name: 'Redis', category: 'database' },
+
   // Tools & DevOps
   { name: 'Git', category: 'tools' },
   { name: 'Docker', category: 'tools' },
+  { name: 'CI/CD', category: 'tools' },
+  { name: 'Terraform', category: 'tools' },
+  { name: 'Google Cloud', category: 'tools' },
+  { name: 'AWS', category: 'tools' },
   { name: 'Pytest', category: 'tools' },
   { name: 'JWT', category: 'tools' },
-  
+
   // AI & Other
-  { name: 'AI/ML Integration', category: 'other' },
+  { name: 'LLMs em produção', category: 'other' },
+  { name: 'LangGraph', category: 'other' },
   { name: 'Llama', category: 'other' },
   { name: 'TDD', category: 'other' },
   { name: 'Microserviços', category: 'other' },
@@ -47,49 +53,64 @@ export const skills: Skill[] = [
 export const experiences: Experience[] = [
   {
     id: '1',
-    company: 'Ctrl+Play',
+    company: 'Grupo Boticário',
+    position: {
+      pt: 'Desenvolvedor Full Stack',
+      en: 'Full Stack Developer',
+    },
+    startDate: '2026-04',
+    endDate: 'Presente',
+    current: true,
+    description: {
+      pt: 'Ferramentas internas para a rede de franquias e varejo: features web com Next.js/TypeScript e Node.js/Express, e serviços Python/FastAPI para processamento de dados e integrações. Entreguei 20+ endpoints e telas usados diariamente pelas lojas, reduzi em 35% o tempo de carregamento do dashboard principal (SSR + otimização de queries) e baixei o tempo de testes do pipeline de 12 para 5 minutos.',
+      en: 'Internal tools for the franchise and retail network: web features with Next.js/TypeScript and Node.js/Express, plus Python/FastAPI services for data processing and integrations. Delivered 20+ endpoints and screens used daily by stores, cut the main dashboard load time by 35% (SSR + query optimization) and brought the pipeline test run down from 12 to 5 minutes.',
+    },
+    technologies: ['Next.js', 'React', 'TypeScript', 'Node.js', 'Express', 'Python', 'FastAPI', 'PostgreSQL', 'Docker', 'CI/CD'],
+  },
+  {
+    id: '2',
+    company: 'CNA+',
     position: {
       pt: 'Desenvolvedor Full Stack',
       en: 'Full Stack Developer',
     },
     startDate: '2024-09',
-    endDate: 'Presente',
-    current: true,
+    endDate: '2026-04',
     description: {
-      pt: 'Desenvolvedor full stack responsável por fortalecer o sistema LMS (Learning Management System) da empresa, focando em estabilidade e performance. Implementei sistema complexo de versionamento de cursos, APIs RESTful robustas e estratégias abrangentes de testes com cobertura superior a 85%.',
-      en: 'Full stack developer responsible for strengthening the company\'s LMS (Learning Management System), focusing on stability and performance. Implemented complex course versioning system, robust RESTful APIs and comprehensive testing strategies with over 85% coverage.',
+      pt: 'Evoluí o LMS usado por 30.000+ alunos ativos. Projetei o sistema de versionamento de cursos (histórico completo e rollback em um clique), lançado sem downtime. Levei os principais endpoints de 1,8 s para 350 ms (p95) corrigindo N+1, criando índices e cache com Redis, e subi a cobertura de testes de ~40% para mais de 85% com Pytest, reduzindo bugs críticos em ~60%.',
+      en: 'Evolved the LMS used by 30,000+ active students. Designed the course versioning system (full history and one-click rollback), shipped with zero downtime. Took the main course endpoints from 1.8 s to 350 ms (p95) by fixing N+1 queries, adding indexes and Redis caching, and raised test coverage from ~40% to over 85% with Pytest, cutting critical bugs by ~60%.',
     },
-    technologies: ['Python', 'Django REST Framework', 'APIs RESTful', 'PostgreSQL', 'Pytest', 'Node.js', 'React.js', 'Git', 'DevOps'],
+    technologies: ['Python', 'Django REST Framework', 'PostgreSQL', 'Redis', 'Pytest', 'Node.js', 'React.js', 'Docker'],
   },
   {
-    id: '2',
+    id: '3',
     company: 'NUVEN',
     position: {
-      pt: 'Desenvolvedor de Back End',
+      pt: 'Desenvolvedor Back End',
       en: 'Backend Developer',
     },
     startDate: '2024-01',
     endDate: '2024-12',
     description: {
-      pt: 'Desenvolvedor backend especializado em soluções de inteligência artificial. Arquitetei e implementei integração completa com o modelo Llama, sistema de autenticação JWT, rate limiting e containerização com Docker. Estabeleci arquitetura escalável para múltiplas instâncias simultâneas de IA.',
-      en: 'Backend developer specialized in artificial intelligence solutions. Architected and implemented complete integration with Llama model, JWT authentication system, rate limiting and Docker containerization. Established scalable architecture for multiple simultaneous AI instances.',
+      pt: 'Integração com o modelo Llama para automatizar processos de negócio: API Node.js/Express em TypeScript na frente de um serviço de inferência Python/FastAPI, com autenticação JWT, rate limiting por cliente e cache de respostas. Em produção, ~5.000 requisições/dia com 99,5% de uptime; o cache reduziu em 40% o tempo médio de resposta.',
+      en: 'Llama model integration to automate business processes: a Node.js/Express TypeScript API in front of a Python/FastAPI inference service, with JWT auth, per-client rate limiting and response caching. In production it handled ~5,000 requests/day at 99.5% uptime; caching cut average response time by 40%.',
     },
-    technologies: ['Node.js', 'Express', 'TypeScript', 'Llama', 'PostgreSQL', 'Docker', 'JWT'],
+    technologies: ['Node.js', 'Express', 'TypeScript', 'Python', 'FastAPI', 'Llama', 'PostgreSQL', 'Docker', 'JWT'],
   },
   {
-    id: '3',
+    id: '4',
     company: 'Loading Desenvolvimento Jr',
     position: {
-      pt: 'Desenvolvedor de Software',
-      en: 'Software Developer',
+      pt: 'Desenvolvedor de Software Trainee',
+      en: 'Software Developer Trainee',
     },
     startDate: '2023-06',
     endDate: '2023-12',
     description: {
-      pt: 'Trainee em desenvolvimento web full-stack, participando de projetos reais em ambiente de aprendizado estruturado. Desenvolvi aplicações web completas, interfaces responsivas e APIs para comunicação entre sistemas, seguindo boas práticas e metodologias ágeis.',
-      en: 'Full-stack web development trainee, participating in real projects in a structured learning environment. Developed complete web applications, responsive interfaces and APIs for system communication, following best practices and agile methodologies.',
+      pt: 'Aplicações web completas para clientes reais, com React.js no front e Node.js/Express e Django no back, em um time de 6 pessoas com code review e Scrum. Entreguei 4 projetos de clientes e passei de tarefas guiadas a ser dono de features de ponta a ponta.',
+      en: 'Complete web applications for real clients, with React.js on the front end and Node.js/Express and Django on the back end, in a team of 6 with code review and Scrum. Delivered 4 client projects and moved from guided tasks to owning features end to end.',
     },
-    technologies: ['JavaScript', 'React.js', 'Node.js', 'Python', 'Django', 'HTML5', 'CSS3', 'Git'],
+    technologies: ['JavaScript', 'React.js', 'Node.js', 'Express', 'Python', 'Django', 'HTML5', 'CSS3', 'Git'],
   },
 ];
 
@@ -180,6 +201,26 @@ export const projects: Project[] = [
 
 export const certifications: Certification[] = [
   {
+    id: 'gcp-pcd',
+    name: {
+      pt: 'Google Cloud Certified Professional Cloud Developer',
+      en: 'Google Cloud Certified Professional Cloud Developer',
+    },
+    issuer: 'Google Cloud',
+    date: '2026',
+    link: '#',
+  },
+  {
+    id: 'aws-ccp',
+    name: {
+      pt: 'AWS Certified Cloud Practitioner',
+      en: 'AWS Certified Cloud Practitioner',
+    },
+    issuer: 'Amazon Web Services',
+    date: '2026',
+    link: '#',
+  },
+  {
     id: '1',
     name: {
       pt: 'Fundamentals of Deep Learning',
@@ -215,12 +256,12 @@ export const certifications: Certification[] = [
 export const ptContent: LocaleContent = {
   personal: {
     name: 'Inácio Filho',
-    title: { pt: 'Desenvolvedor Full Stack', en: 'Full Stack Developer' },
+    title: { pt: 'Engenheiro de Software Full Stack & Backend', en: 'Full Stack & Backend Software Engineer' },
     location: 'Coreaú, Ceará - Brasil',
     university: 'Engenharia da Computação - UFC',
     email: 'inaciofilho.lima@gmail.com',
   },
-  about: `Desenvolvedor Full Stack desde 2023, especializado em arquiteturas backend de alta performance e integração de inteligência artificial. Com mais de 3 projetos enterprise entregues e 100% de entregas no prazo, minha expertise inclui Python/Django, Node.js/TypeScript, React.js e PostgreSQL.\n\nFoco em código limpo, testes automatizados e arquiteturas bem estruturadas. Desenvolvo APIs RESTful robustas e escaláveis, sistemas LMS complexos com versionamento avançado e cobertura de testes superior a 85%.\n\nGraduando em Engenharia da Computação pela Universidade Federal do Ceará, sempre em busca de soluções inovadoras que utilizem tecnologia para resolver problemas reais.`,
+  about: `Construo backends que continuam rápidos quando os dados crescem. Principalmente Python e Django/FastAPI, e Node.js com TypeScript quando o trabalho pede. Hoje sou desenvolvedor full stack no Grupo Boticário, criando ferramentas internas para a rede de franquias com Next.js, Node.js e FastAPI.\n\nAntes, no CNA+, criei o sistema de versionamento de cursos do LMS usado por mais de 30 mil alunos, levei os principais endpoints de 1,8 s para 350 ms e mantive a cobertura de testes acima de 85%. Na NUVEN, coloquei um modelo Llama em produção atrás de uma API autenticada e com rate limiting, atendendo cerca de 5.000 requisições por dia.\n\nNo tempo livre construo projetos como o Inkstave, um editor LaTeX colaborativo em tempo real com agente de escrita por IA. Formado pela Universidade Federal do Ceará e certificado Google Cloud Professional Cloud Developer.`,
   navigation: {
     home: 'Início',
     about: 'Sobre',
@@ -237,7 +278,7 @@ export const ptContent: LocaleContent = {
   sections: {
     hero: {
       greeting: 'Olá, eu sou',
-      description: 'Desenvolvedor Full Stack | Backend Specialist | Graduado em Engenharia da Computação',
+      description: 'Full Stack & Backend | Python, Django, FastAPI, Node.js, TypeScript | LLMs em produção',
       cta: 'Ver Projetos',
     },
     about: {
@@ -301,7 +342,6 @@ export const ptContent: LocaleContent = {
     socials: {
       github: 'GitHub',
       linkedin: 'LinkedIn',
-      instagram: 'Instagram',
     },
   },
   notFound: {
@@ -319,12 +359,12 @@ export const ptContent: LocaleContent = {
 export const enContent: LocaleContent = {
   personal: {
     name: 'Inácio Filho',
-    title: { pt: 'Desenvolvedor Full Stack', en: 'Full Stack Developer' },
+    title: { pt: 'Engenheiro de Software Full Stack & Backend', en: 'Full Stack & Backend Software Engineer' },
     location: 'Coreaú, Ceará - Brazil',
     university: 'Computer Engineering - UFC',
     email: 'inaciofilho.lima@gmail.com',
   },
-  about: `Full Stack Developer since 2023, specialized in high-performance backend architectures and artificial intelligence integration. With over 3 enterprise projects delivered and 100% on-time delivery, my expertise includes Python/Django, Node.js/TypeScript, React.js and PostgreSQL.\n\nFocusing on clean code, automated testing and well-structured architectures. I develop robust and scalable RESTful APIs, complex LMS systems with advanced versioning and test coverage over 85%.\n\nStudying Computer Engineering at the Federal University of Ceará, always seeking innovative solutions that use technology to solve real problems.`,
+  about: `I build backends that stay fast when the data grows. Python and Django/FastAPI mostly, Node.js and TypeScript when the job calls for it. Today I'm a full stack developer at Grupo Boticário, building internal tools for the franchise network with Next.js, Node.js and FastAPI.\n\nBefore that, at CNA+, I built the course versioning system of an LMS used by 30,000+ students, cut the main endpoints from 1.8 s to 350 ms and kept test coverage above 85%. At NUVEN, I put a Llama model in production behind an authenticated, rate-limited API handling around 5,000 requests a day.\n\nOn the side I build things like Inkstave, a real-time collaborative LaTeX editor with an AI writing agent. Graduated from the Federal University of Ceará and Google Cloud Certified Professional Cloud Developer.`,
   navigation: {
     home: 'Home',
     about: 'About',
@@ -341,7 +381,7 @@ export const enContent: LocaleContent = {
   sections: {
     hero: {
       greeting: 'Hello, I am',
-      description: 'Full Stack Developer | Backend Specialist | Computer Engineering Graduate',
+      description: 'Full Stack & Backend | Python, Django, FastAPI, Node.js, TypeScript | LLMs in production',
       cta: 'View Projects',
     },
     about: {
@@ -405,7 +445,6 @@ export const enContent: LocaleContent = {
     socials: {
       github: 'GitHub',
       linkedin: 'LinkedIn',
-      instagram: 'Instagram',
     },
   },
   notFound: {

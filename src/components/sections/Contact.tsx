@@ -10,7 +10,6 @@ export const Contact = () => {
   const socials = [
     { label: 'GitHub', href: socialLinks.github },
     { label: 'LinkedIn', href: socialLinks.linkedin },
-    { label: 'Instagram', href: socialLinks.instagram },
   ].filter((s) => s.href);
 
   return (

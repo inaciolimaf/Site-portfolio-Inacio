@@ -17,7 +17,6 @@ export interface PersonalInfo {
 export interface SocialLinks {
   github?: string;
   linkedin?: string;
-  instagram?: string;
   twitter?: string;
 }
 
@@ -91,7 +90,6 @@ export interface LocaleContent {
     socials: {
       github: string;
       linkedin: string;
-      instagram: string;
     };
   };
   sections: {
