@@ -20,9 +20,21 @@ export interface SocialLinks {
   twitter?: string;
 }
 
+/** A notable achievement, rendered as a commit in the career git graph. */
+export interface Highlight {
+  /** conventional-commit type shown before the message */
+  type: 'feat' | 'perf' | 'test' | 'ci' | 'ops' | 'chore';
+  message: LocalizedText;
+  /** optional mini-game that replays this achievement */
+  game?: 'p95' | 'pipeline';
+}
+
 export interface Experience {
   id: string;
   company: string;
+  /** git branch name for the career graph */
+  branch: string;
+  highlights: Highlight[];
   position: LocalizedText;
   startDate: string;
   endDate: string;

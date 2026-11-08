@@ -1,6 +1,6 @@
 import { useLocale } from '@/hooks/useLocale';
 import { SectionHeader } from '@/components/ui/SectionHeader';
-import { Reveal } from '@/components/ui/Reveal';
+import { Placeable } from '@/components/assembly/Placeable';
 
 export const About = () => {
   const { content, locale } = useLocale();
@@ -30,41 +30,46 @@ export const About = () => {
 
         <div className="grid gap-16 lg:grid-cols-[1.5fr_1fr]">
           {/* narrative */}
-          <Reveal className="max-w-2xl">
+          <div className="max-w-2xl">
             {paragraphs.map((p, i) => (
-              <p
-                key={i}
-                className={`leading-relaxed text-foreground/85 ${
-                  i === 0 ? 'text-xl sm:text-2xl font-display font-medium tracking-tight text-foreground' : 'mt-6 text-base sm:text-lg'
-                }`}
-              >
-                {p}
-              </p>
+              <Placeable key={i} className={i === 0 ? '' : 'mt-6'}>
+                <p
+                  className={`leading-relaxed text-foreground/85 ${
+                    i === 0
+                      ? 'text-xl sm:text-2xl font-display font-medium tracking-tight text-foreground'
+                      : 'text-base sm:text-lg'
+                  }`}
+                >
+                  {p}
+                </p>
+              </Placeable>
             ))}
-          </Reveal>
+          </div>
 
           {/* index card + stats */}
-          <Reveal delay={0.1}>
-            <dl className="divide-y divide-border border-y border-border">
-              {facts.map((f) => (
-                <div key={f.k} className="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:justify-between">
-                  <dt className="label-mono text-muted-foreground">{f.k}</dt>
-                  <dd className="text-sm sm:text-right sm:text-base">{f.v}</dd>
-                </div>
+          <div>
+            <dl className="border-y border-border">
+              {facts.map((f, i) => (
+                <Placeable key={f.k} className={i ? 'border-t border-border' : ''}>
+                  <div className="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:justify-between">
+                    <dt className="label-mono text-muted-foreground">{f.k}</dt>
+                    <dd className="text-sm sm:text-right sm:text-base">{f.v}</dd>
+                  </div>
+                </Placeable>
               ))}
             </dl>
 
             <div className="mt-10 grid grid-cols-3 gap-4">
               {stats.map((s) => (
-                <div key={s.l}>
-                  <div className="font-display text-3xl font-bold tracking-tight text-[hsl(var(--signal))] sm:text-4xl">
+                <Placeable key={s.l}>
+                  <div className="misreg font-display text-3xl font-bold tracking-tight text-[hsl(var(--signal))] sm:text-4xl">
                     {s.n}
                   </div>
                   <div className="mt-1 text-xs leading-snug text-muted-foreground">{s.l}</div>
-                </div>
+                </Placeable>
               ))}
             </div>
-          </Reveal>
+          </div>
         </div>
       </div>
     </section>

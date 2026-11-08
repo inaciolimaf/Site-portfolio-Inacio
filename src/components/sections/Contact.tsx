@@ -2,7 +2,7 @@ import { useLocale } from '@/hooks/useLocale';
 import { socialLinks } from '@/data/portfolio';
 import { ArrowUpRight } from 'lucide-react';
 import { SectionHeader } from '@/components/ui/SectionHeader';
-import { Reveal } from '@/components/ui/Reveal';
+import { Placeable } from '@/components/assembly/Placeable';
 
 export const Contact = () => {
   const { content, locale } = useLocale();
@@ -23,27 +23,30 @@ export const Contact = () => {
         />
 
         <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr] lg:items-end">
-          <Reveal>
-            <a
-              href={`mailto:${content.personal.email}`}
-              className="group inline-flex max-w-full items-start gap-3 font-display text-[7vw] font-bold leading-[1.05] tracking-tight transition-colors hover:text-[hsl(var(--signal))] sm:text-4xl lg:text-5xl"
-            >
-              <span className="break-words">{content.personal.email}</span>
-              <ArrowUpRight className="mt-1 h-7 w-7 flex-shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </a>
-            <p className="mt-6 max-w-lg text-muted-foreground">
-              {content.personal.location}
-            </p>
-          </Reveal>
+          <div>
+            <Placeable>
+              <a
+                href={`mailto:${content.personal.email}`}
+                className="group inline-flex max-w-full items-start gap-3 font-display text-[7vw] font-bold leading-[1.05] tracking-tight transition-colors hover:text-[hsl(var(--signal))] sm:text-4xl lg:text-5xl"
+              >
+                <span className="break-words">{content.personal.email}</span>
+                <ArrowUpRight className="mt-1 h-7 w-7 flex-shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </a>
+            </Placeable>
+            <Placeable className="mt-6">
+              <p className="max-w-lg text-muted-foreground">{content.personal.location}</p>
+            </Placeable>
+          </div>
 
-          <Reveal delay={0.1}>
-            <div className="border-t border-border">
+          <div className="border-t border-border">
+            <Placeable>
               <span className="block py-4 label-mono text-muted-foreground">
                 {content.sections.contact.socialMedia}
               </span>
-              {socials.map((s) => (
+            </Placeable>
+            {socials.map((s) => (
+              <Placeable key={s.label}>
                 <a
-                  key={s.label}
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -52,9 +55,9 @@ export const Contact = () => {
                   <span className="font-display text-lg font-medium">{s.label}</span>
                   <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
-              ))}
-            </div>
-          </Reveal>
+              </Placeable>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,3 +1,4 @@
+import { Placeable } from '@/components/assembly/Placeable';
 import { useEffect, useState, Suspense, lazy } from 'react';
 import { ArrowUpRight, ArrowDown } from 'lucide-react';
 import { useLocale } from '@/hooks/useLocale';
@@ -66,12 +67,14 @@ export const Hero = () => {
       <div className="relative z-10 mx-auto flex min-h-screen max-w-[1500px] flex-col px-6 pt-28 pb-10 sm:px-10 lg:px-16">
         {/* eyebrow / masthead line */}
         <div className="flex items-end justify-between border-b border-border pb-4">
-          <span className="label-mono text-muted-foreground">
-            {content.personal.location}
-          </span>
-          <span className="label-mono hidden text-muted-foreground sm:block">
-            {locale === 'pt' ? 'Portfólio — Ed. 2026' : 'Portfolio — Ed. 2026'}
-          </span>
+          <Placeable>
+            <span className="label-mono text-muted-foreground">{content.personal.location}</span>
+          </Placeable>
+          <Placeable className="hidden sm:block">
+            <span className="label-mono text-muted-foreground">
+              {locale === 'pt' ? 'Portfólio — Ed. 2026' : 'Portfolio — Ed. 2026'}
+            </span>
+          </Placeable>
         </div>
 
         {/* headline block */}
@@ -81,16 +84,19 @@ export const Hero = () => {
             {content.personal.name} — {content.personal.title[locale]}
           </h1>
 
-          <div className="mb-5 flex items-center gap-4 sm:mb-6" aria-hidden="true">
-            <span className="h-px w-10 bg-[hsl(var(--signal))] sm:w-12" />
-            <span className="label-mono text-[hsl(var(--signal))]">
+          <Placeable className="mb-5 sm:mb-6">
+          <div className="flex items-center gap-4" aria-hidden="true">
+            <span className="misreg h-px w-10 bg-[hsl(var(--signal))] sm:w-12" />
+            <span className="misreg label-mono text-[hsl(var(--signal))]">
               {content.personal.title[locale]}
             </span>
           </div>
+          </Placeable>
 
           {/* the signature: kinetic WebGL type, or a static echo of it.
               The fixed height only exists to size the WebGL canvas; the static
               fallback sizes itself so mobile doesn't get big empty gaps. */}
+          <Placeable>
           <div aria-hidden="true">
             {webgl ? (
               <div className="relative h-[42vh] min-h-[280px] w-full">
@@ -102,15 +108,19 @@ export const Hero = () => {
               <StaticHeadline lines={nameLines} />
             )}
           </div>
+          </Placeable>
 
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:mt-8 sm:text-lg">
-            {content.sections.hero.description}
-          </p>
+          <Placeable className="mt-6 max-w-xl sm:mt-8">
+            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
+              {content.sections.hero.description}
+            </p>
+          </Placeable>
         </div>
 
         {/* footer row: actions + meta */}
         <div className="flex flex-col gap-6 border-t border-border pt-6 sm:flex-row sm:items-end sm:justify-between">
           <div className="flex flex-wrap items-center gap-3">
+            <Placeable>
             <button
               onClick={() => scrollToSection('#projects')}
               className="group inline-flex items-center gap-2 bg-[hsl(var(--ink))] px-6 py-3 text-sm font-medium text-[hsl(var(--paper))] transition-colors hover:bg-[hsl(var(--signal))]"
@@ -118,6 +128,8 @@ export const Hero = () => {
               {content.sections.hero.cta}
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
+            </Placeable>
+            <Placeable>
             <a
               href={socialLinks.github}
               target="_blank"
@@ -127,12 +139,16 @@ export const Hero = () => {
               GitHub
               <ArrowUpRight className="h-4 w-4" />
             </a>
+            </Placeable>
           </div>
 
           <div className="flex items-center gap-6">
+            <Placeable>
             <span className="label-mono text-muted-foreground">
               {locale === 'pt' ? 'Desde 2023' : 'Since 2023'}
             </span>
+            </Placeable>
+            <Placeable>
             <button
               onClick={() => scrollToSection('#about')}
               className="group flex items-center gap-2 label-mono text-muted-foreground transition-colors hover:text-[hsl(var(--ink))]"
@@ -140,6 +156,7 @@ export const Hero = () => {
               {locale === 'pt' ? 'Rolar' : 'Scroll'}
               <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
             </button>
+            </Placeable>
           </div>
         </div>
       </div>

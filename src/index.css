@@ -131,6 +131,17 @@
   .font-display { font-family: 'Bricolage Grotesque', 'Inter', sans-serif; }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
 
+  /* Print misregistration — driven by --misreg (see useMisregistration).
+     .misreg       vermilion elements slip off-register
+     .misreg-text  ink text gets a vermilion ghost plate behind it */
+  .misreg {
+    transform: translate3d(calc(var(--misreg, 0) * 1px), calc(var(--misreg, 0) * -0.35px), 0);
+  }
+  .misreg-text {
+    text-shadow: calc(var(--misreg, 0) * 1.8px) calc(var(--misreg, 0) * -0.6px) 0
+      hsl(var(--signal) / calc(var(--misreg-a, 0) * 0.85));
+  }
+
   /* Mono utility label — masthead / eyebrow */
   .label-mono {
     font-family: 'JetBrains Mono', monospace;

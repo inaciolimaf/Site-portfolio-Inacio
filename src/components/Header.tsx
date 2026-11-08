@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, BookOpen } from 'lucide-react';
+import { useMotionPrefs } from '@/context/MotionPrefs';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { useLocale } from '@/hooks/useLocale';
 
 export const Header = () => {
   const { content, locale, changeLocale } = useLocale();
+  const { reading, setReading } = useMotionPrefs();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -41,7 +43,7 @@ export const Header = () => {
           className="group flex items-baseline gap-2"
         >
           <span className="font-display text-lg font-extrabold tracking-tight">Inácio Filho</span>
-          <span className="h-1.5 w-1.5 translate-y-[-1px] rounded-full bg-[hsl(var(--signal))]" />
+          <span className="misreg h-1.5 w-1.5 rounded-full bg-[hsl(var(--signal))]" />
         </a>
 
         {/* desktop nav */}
@@ -60,6 +62,18 @@ export const Header = () => {
         </nav>
 
         <div className="flex items-center gap-1">
+          <button
+            onClick={() => setReading(!reading)}
+            aria-pressed={reading}
+            title={locale === 'pt' ? 'Modo leitura: desliga animações e jogos' : 'Reading mode: turns off animations and games'}
+            className={`flex items-center gap-1.5 px-2 py-1 label-mono transition-colors hover:text-[hsl(var(--ink))] ${
+              reading ? 'text-[hsl(var(--signal))]' : 'text-muted-foreground'
+            }`}
+          >
+            <BookOpen className="h-4 w-4" aria-hidden="true" />
+            <span className="hidden sm:inline">{locale === 'pt' ? 'Leitura' : 'Reading'}</span>
+            <span className="sr-only sm:hidden">{locale === 'pt' ? 'Modo leitura' : 'Reading mode'}</span>
+          </button>
           <button
             onClick={() => changeLocale(locale === 'pt' ? 'en' : 'pt')}
             className="label-mono px-2 py-1 text-muted-foreground transition-colors hover:text-[hsl(var(--ink))]"

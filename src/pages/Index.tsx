@@ -7,13 +7,17 @@ import { Projects } from '@/components/sections/Projects';
 import { Certifications } from '@/components/sections/Certifications';
 import { Contact } from '@/components/sections/Contact';
 import { Footer } from '@/components/Footer';
-import { ScrollProgressBar } from '@/components/ui/AdvancedAnimations';
+import { ScrollProgressBar } from '@/components/ScrollProgressBar';
 import { useLocale } from '@/hooks/useLocale';
+import { useMotionPrefs } from '@/context/MotionPrefs';
+import { useMisregistration } from '@/hooks/useMisregistration';
 
 const Index = () => {
   const { locale } = useLocale();
+  const { animated } = useMotionPrefs();
+  useMisregistration(animated);
   return (
-    <div key={locale} className="min-h-screen bg-background">
+    <div key={locale} className="min-h-screen overflow-x-clip bg-background">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-[hsl(var(--ink))] focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-[hsl(var(--paper))]"

@@ -1,3 +1,4 @@
+import { Placeable } from '@/components/assembly/Placeable';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
@@ -5,7 +6,6 @@ import { useLocale } from '@/hooks/useLocale';
 import { projects } from '@/data/portfolio';
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { SectionHeader } from '@/components/ui/SectionHeader';
-import { Reveal } from '@/components/ui/Reveal';
 
 export const Projects = () => {
   const { content, locale } = useLocale();
@@ -36,16 +36,19 @@ export const Projects = () => {
           {projects.map((project, i) => {
             const primary = project.demo || project.github;
             return (
-              <Reveal key={project.id}>
+              <div key={project.id}>
                 <article
                   className="group grid gap-4 border-b border-border py-8 transition-colors hover:bg-[hsl(var(--signal))]/[0.04] md:grid-cols-[minmax(0,64px)_1fr_auto] md:items-baseline md:gap-8"
                   onMouseEnter={() => fine && project.image && setPreview({ src: project.image, alt: project.name[locale] })}
                   onMouseMove={(e) => { mx.set(e.clientX); my.set(e.clientY); }}
                   onMouseLeave={() => setPreview(null)}
                 >
-                  <span className="label-mono text-muted-foreground">{String(i + 1).padStart(2, '0')}</span>
+                  <Placeable>
+                    <span className="label-mono text-muted-foreground">{String(i + 1).padStart(2, '0')}</span>
+                  </Placeable>
 
                   <div>
+                    <Placeable>
                     <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                       {project.caseStudy ? (
                         <Link
@@ -70,13 +73,15 @@ export const Projects = () => {
                         </span>
                       )}
                     </div>
+                    </Placeable>
 
-                    <p className="mt-3 max-w-2xl leading-relaxed text-foreground/75">
-                      {project.description[locale]}
-                    </p>
+                    <Placeable className="mt-3">
+                      <p className="max-w-2xl leading-relaxed text-foreground/75">{project.description[locale]}</p>
+                    </Placeable>
 
                     {/* inline preview for touch devices */}
                     {!fine && project.image && (
+                      <Placeable>
                       <a
                         href={primary}
                         target="_blank"
@@ -90,15 +95,19 @@ export const Projects = () => {
                           className="aspect-[16/10] w-full object-cover object-top"
                         />
                       </a>
+                      </Placeable>
                     )}
 
-                    <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
+                    <Placeable className="mt-4">
+                    <ul className="flex flex-wrap gap-x-4 gap-y-1">
                       {project.technologies.map((t) => (
                         <li key={t} className="label-mono text-muted-foreground">{t}</li>
                       ))}
                     </ul>
+                    </Placeable>
                   </div>
 
+                  <Placeable>
                   <div className="flex flex-col gap-2 md:items-end">
                     {project.caseStudy && (
                       <Link
@@ -132,14 +141,15 @@ export const Projects = () => {
                       </a>
                     )}
                   </div>
+                  </Placeable>
                 </article>
-              </Reveal>
+              </div>
             );
           })}
 
-          <div className="py-8 label-mono text-muted-foreground">
-            {content.sections.projects.newProject}
-          </div>
+          <Placeable className="py-8">
+            <div className="label-mono text-muted-foreground">{content.sections.projects.newProject}</div>
+          </Placeable>
         </div>
       </div>
 

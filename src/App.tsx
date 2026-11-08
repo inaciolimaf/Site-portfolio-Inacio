@@ -1,33 +1,24 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import CaseInkstave from "./pages/CaseInkstave";
 import Links from "./pages/Links";
 import NotFound from "./pages/NotFound";
 import { LocaleProvider } from "@/context/LocaleContext";
-
-const queryClient = new QueryClient();
+import { MotionPrefsProvider } from "@/context/MotionPrefs";
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <LocaleProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/inkstave" element={<CaseInkstave />} />
-            <Route path="/links" element={<Links />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </LocaleProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <LocaleProvider>
+    <MotionPrefsProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/inkstave" element={<CaseInkstave />} />
+        <Route path="/links" element={<Links />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+    </MotionPrefsProvider>
+  </LocaleProvider>
 );
 
 export default App;

@@ -1,8 +1,8 @@
+import { Placeable } from '@/components/assembly/Placeable';
 import { useLocale } from '@/hooks/useLocale';
 import { certifications } from '@/data/portfolio';
 import { ArrowUpRight } from 'lucide-react';
 import { SectionHeader } from '@/components/ui/SectionHeader';
-import { Reveal } from '@/components/ui/Reveal';
 
 export const Certifications = () => {
   const { content, locale } = useLocale();
@@ -22,7 +22,7 @@ export const Certifications = () => {
             const hasLink = cert.link && cert.link !== '#';
             const Wrapper = hasLink ? 'a' : 'div';
             return (
-              <Reveal key={cert.id}>
+              <Placeable key={cert.id}>
                 <Wrapper
                   {...(hasLink ? { href: cert.link, target: '_blank', rel: 'noopener noreferrer' } : {})}
                   className={`group grid gap-3 border-b border-border py-8 md:grid-cols-[1fr_auto] md:items-center md:gap-8 ${
@@ -44,7 +44,7 @@ export const Certifications = () => {
                     </span>
                   )}
                 </Wrapper>
-              </Reveal>
+              </Placeable>
             );
           })}
         </div>

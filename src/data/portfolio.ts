@@ -54,6 +54,12 @@ export const experiences: Experience[] = [
   {
     id: '1',
     company: 'Grupo Boticário',
+    branch: 'boticario',
+    highlights: [
+      { type: 'ci', message: { pt: 'testes do pipeline de 12 para 5 min', en: 'pipeline test run from 12 to 5 min' }, game: 'pipeline' },
+      { type: 'perf', message: { pt: 'dashboard principal 35% mais rápido (SSR + queries)', en: 'main dashboard 35% faster (SSR + queries)' } },
+      { type: 'feat', message: { pt: '20+ endpoints e telas usados todo dia pelas lojas', en: '20+ endpoints and screens used daily by stores' } },
+    ],
     position: {
       pt: 'Desenvolvedor Full Stack',
       en: 'Full Stack Developer',
@@ -70,6 +76,12 @@ export const experiences: Experience[] = [
   {
     id: '2',
     company: 'CNA+',
+    branch: 'cna-plus',
+    highlights: [
+      { type: 'test', message: { pt: 'cobertura de testes de ~40% para 85%+', en: 'test coverage from ~40% to 85%+' } },
+      { type: 'perf', message: { pt: 'endpoints p95 de 1,8 s para 350 ms', en: 'endpoints p95 from 1.8 s to 350 ms' }, game: 'p95' },
+      { type: 'feat', message: { pt: 'versionamento de cursos com rollback em 1 clique', en: 'course versioning with one-click rollback' } },
+    ],
     position: {
       pt: 'Desenvolvedor Full Stack',
       en: 'Full Stack Developer',
@@ -85,6 +97,12 @@ export const experiences: Experience[] = [
   {
     id: '3',
     company: 'NUVEN',
+    branch: 'nuven',
+    highlights: [
+      { type: 'ops', message: { pt: '~5.000 req/dia com 99,5% de uptime', en: '~5,000 req/day at 99.5% uptime' } },
+      { type: 'perf', message: { pt: 'cache reduziu 40% do tempo de resposta', en: 'caching cut response time by 40%' } },
+      { type: 'feat', message: { pt: 'API Node/TS na frente da inferência Llama', en: 'Node/TS API in front of Llama inference' } },
+    ],
     position: {
       pt: 'Desenvolvedor Back End',
       en: 'Backend Developer',
@@ -100,6 +118,11 @@ export const experiences: Experience[] = [
   {
     id: '4',
     company: 'Loading Desenvolvimento Jr',
+    branch: 'loading-jr',
+    highlights: [
+      { type: 'chore', message: { pt: 'de tarefas guiadas a dono de features', en: 'from guided tasks to owning features' } },
+      { type: 'feat', message: { pt: '4 projetos de clientes entregues', en: '4 client projects delivered' } },
+    ],
     position: {
       pt: 'Desenvolvedor de Software Trainee',
       en: 'Software Developer Trainee',
@@ -115,21 +138,6 @@ export const experiences: Experience[] = [
 ];
 
 export const projects: Project[] = [
-  {
-    id: 'gcp-cloud-quest',
-    name: {
-      pt: 'Cloud Quest — GCP Exam Trainer',
-      en: 'Cloud Quest — GCP Exam Trainer',
-    },
-    description: {
-      pt: 'App gamificado para treinar a certificação Google Cloud Professional Cloud Developer: 741 questões em 7 modos de estudo, simulados cronometrados e guia de estudos com checklist. 100% client-side, com XP, streaks e badges.',
-      en: 'Gamified app to drill the Google Cloud Professional Cloud Developer exam: 741 questions across 7 study modes, timed mock exams and a study guide with checklist. Fully client-side, with XP, streaks and badges.',
-    },
-    startDate: '2026',
-    technologies: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion', 'JavaScript'],
-    github: 'https://github.com/inaciolimaf/gcp-developer-exam-trainer-',
-    image: '/projects/gcp-cloud-quest.jpg',
-  },
   {
     id: 'inkstave',
     name: {
