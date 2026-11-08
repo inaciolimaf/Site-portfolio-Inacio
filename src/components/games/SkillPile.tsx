@@ -92,7 +92,9 @@ export default function SkillPile({ skills, labels }: Props) {
         {skills.map((s, i) => (
           <div
             key={`${run}-${s.name}`}
-            ref={(n) => (blocks.current[i] = n)}
+            ref={(n) => {
+              blocks.current[i] = n;
+            }}
             className={`absolute left-0 top-0 cursor-grab touch-none whitespace-nowrap border px-3 py-2 font-mono text-xs font-medium uppercase tracking-wider opacity-0 shadow-[2px_2px_0_hsl(var(--ink)/0.25)] active:cursor-grabbing sm:text-sm ${TONE[s.category]}`}
           >
             {s.name}
